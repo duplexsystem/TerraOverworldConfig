@@ -1,0 +1,29 @@
+id: PLATEAO_PILLARS
+type: FEATURE
+
+distributor:
+  type: AND
+  distributors:
+    - type: PADDED_GRID
+      width: 9
+      padding: 2
+      salt: 23948576
+
+locator:
+  type: PATTERN
+  range:
+    min: 80
+    max: 130
+  pattern:
+    type: AND
+    patterns:
+      - type: MATCH_SOLID
+        offset: 1
+      - type: MATCH_AIR
+        offset: 0
+
+structures:
+  distribution:
+    type: CONSTANT
+  structures: 
+    - pillar_to_bottom: 1

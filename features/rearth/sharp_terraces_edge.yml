@@ -1,0 +1,63 @@
+id: SHARP_TERRACES_EDGE
+type: FEATURE
+
+distributor:
+  type: "YES"
+
+locator:
+  type: OR
+  locators:
+    - type: AND
+      locators:
+        - type: TOP
+          range: &range
+            min: 70
+            max: 80
+        - type: ADJACENT_PATTERN
+          range: *range
+          pattern:
+            type: MATCH
+            block: minecraft:air
+            offset: -1
+        - type: PATTERN
+          range: *range
+          pattern:
+            type: MATCH
+            block:  minecraft:farmland
+            offset: -1
+        - type: PATTERN
+          range: *range
+          pattern:
+            type: MATCH
+            block: minecraft:air
+            offset: 0
+    - type: AND
+      locators:
+        - type: TOP
+          range: &range
+            min: 70
+            max: 80
+        - type: ADJACENT_PATTERN
+          range: *range
+          pattern:
+            type: MATCH
+            block: minecraft:grass_block
+            offset: -1
+        - type: PATTERN
+          range: *range
+          pattern:
+            type: MATCH
+            block:  minecraft:farmland
+            offset: -1
+        - type: PATTERN
+          range: *range
+          pattern:
+            type: MATCH
+            block: minecraft:air
+            offset: 0
+
+structures:
+  distribution:
+    type: CONSTANT
+  structures: farm_edge
+      

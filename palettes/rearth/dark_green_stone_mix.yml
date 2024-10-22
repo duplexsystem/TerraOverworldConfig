@@ -1,0 +1,14 @@
+id: DARK_STONE_MIX
+type: PALETTE
+
+layers:
+  - materials:
+      - minecraft:moss_block: 1
+      - minecraft:blackstone: 2
+      - minecraft:stone: 2
+      - minecraft:cobblestone: 1
+      - minecraft:mossy_cobblestone: 1
+    layers: 1
+    sampler:
+      type: WHITE_NOISE
+      salt: 4972

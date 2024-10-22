@@ -1,0 +1,115 @@
+id: LUSH_LOOPS
+type: BIOME
+extends: [ CARVING_LAND, BASE ]
+vanilla: minecraft:jungle
+color: $biomes/colors.yml:OVERGROWN_CLIFFS
+
+tags:
+  - USE_LOOPS_RIVER
+
+colors:
+  grass: 0x3abf13
+  foliage: 0x00aa17
+  water: 0x1e97f2
+  water-fog: 0x1e97f2
+
+vars: &variables
+  base: 75
+  height: 55
+  archHeight: 3.5
+  archRadius: 35
+  angle: 1.2
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      // positive / higher = solid
+        max(-y + base + surfaceBase(x,z) * 20, -3) +
+        max(arches(rotate(x, z, angle), y - 21, rotate(z, x, angle)) * 10, -3)
+    functions:
+      rotate:
+        arguments: [x, y, rad]
+        expression: x * cos(rad) - y * sin(rad)
+    samplers:
+      surfaceBase:
+        dimensions: 2
+        type: FBM
+        sampler:
+          type: OPEN_SIMPLEX_2S
+          frequency: 0.003
+          salt: 3
+        octaves: 3
+        lacunarity: 2
+        gain: 0.5
+      arches:
+        dimensions: 3
+        type: EXPRESSION
+        variables: *variables
+        expression: |
+          // positive / higher = solid
+          (-abs((base + height * (pillarRand(0, z) * 0.3 + 1) * wave(x * 1.3 + pillarRand(0, z) * 50, archRadius)) - y) + archHeight) / archHeight // wave along x-axis
+          - (archMask(z, 0) + 0.98) * 190 * (pillarRand(0, z) * 0.4 + 1) // transform it along x-axis to transform the wave into arches
+          + widthRandom(x,y,z) * 0.8
+        functions:
+          wave:
+            arguments: [x, frequency]
+            expression: -sin(x / frequency)
+          smoothAbs:
+            arguments: [x]
+            expression: sqrt(x * x)
+        samplers:
+          widthRandom:
+            dimensions: 3
+            type: OPEN_SIMPLEX_2
+            frequency: 0.05
+          pillarRand:
+            dimensions: 2
+            type: CELLULAR
+            frequency: 0.012
+            jitter: 0.2
+            return: CellValue
+          archMask: # 1-dimensional
+            dimensions: 2
+            type: LINEAR
+            min: -1
+            max: 0.2
+            sampler:
+              type: CELLULAR
+              frequency: 0.012
+              jitter: 0.2
+
+palette:
+  - GRASS: 319
+  - SAND: 64
+  - MUDDY_BEACH: 61
+  - << meta.yml:palette-bottom
+
+slant:
+  - threshold: 0.96
+    palette:
+      - MOSS_STONE: 319
+      - GRASS: 79
+      - << meta.yml:palette-bottom
+
+features:
+  global-preprocessors:
+    - ARCH_GLOW_LICHEN
+  flora:
+    - GRASS
+    - CROSSING_VINES
+    - LARGE_LEAF_VINES
+    - LARGE_CEILING_VINES
+    - POPPY_PATCH
+    - DANDELION_PATCH
+    - ROSE_BUSH_PATCH
+    - PEONY_PATCH
+    - LILAC_PATCH
+    - LILY_OF_THE_VALLEY_PATCH
+    - SMALL_DRIPLEAF
+    - BIG_DRIPLEAF
+  trees:
+    - JUNGLE_TREES
+    - JUNGLE_BUSHES

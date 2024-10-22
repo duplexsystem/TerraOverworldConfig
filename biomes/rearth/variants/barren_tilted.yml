@@ -1,0 +1,83 @@
+id: BARE_BOULDERFIELDS
+type: BIOME
+extends: [ CARVING_LAND, BASE ]
+vanilla: minecraft:windswept_hills
+color: $biomes/colors.yml:TEMPERATE_MOUNTAINS
+
+tags:
+  - USE_RIVER
+
+vars: &variables
+  base: 85
+  height: 14
+  tiltStrength: 0.028  # should be set to cell frequency
+  cellHeightVariation: 16
+  mountainHeight: 30
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      // positive / higher = solid
+        -y + base 
+        + cellLean(x,z) * height * remapCellRange(cells(x,z)) + cells(x,z) * cellHeightVariation
+        + surfaceBase(x,z) * mountainHeight
+    functions:
+      remapCellRange:
+        arguments: [x]
+        expression: if(abs(x) < 0.4, 1, x)
+      rotate:
+        arguments: [x, y, rad]
+        expression: x * cos(rad) - y * sin(rad)
+    samplers:
+      cells: &pillars
+        dimensions: 2
+        type: CELLULAR
+        frequency: ${biomes/rearth/variants/barren_tilted.yml:vars.tiltStrength}
+        return: CellValue
+      surfaceBase:
+        <<: *pillars
+        return: NoiseLookup
+        lookup:
+          dimensions: 2
+          type: OPEN_SIMPLEX_2S
+          frequency: 0.003
+      cellLean:
+        <<: *pillars
+        return: LocalNoiseLookup
+        lookup:
+          type: EXPRESSION
+          variables: *variables
+          dimensions: 2
+          expression: |
+            x * tiltStrength + z * tiltStrength * 0.7
+          samplers:
+            variation:
+              dimensions: 2
+              type: OPEN_SIMPLEX_2S
+              frequency: 0.06
+
+slant:
+  - threshold: 0.4
+    palette:
+      - DARK_STONE_MIX: 319
+
+slant-depth: 4
+
+palette:
+  - SNOWY_SLANT: 319
+  - BLANK_DARK_STONE: 140
+  - SAND: 64
+  - << meta.yml:palette-bottom
+
+features:
+  preprocessors:
+    - POWDER_SNOW_DEPOSITS
+  slabs:
+    - SNOW_LAYERS
+  landforms:
+    - SPARSE_GIANT_PILLARS
+    - SMALL_BOULDER_PATCHES
+    - BOULDERS

@@ -1,0 +1,75 @@
+str blockID = getBlock(0, -1, 0);
+if (blockID == "minecraft:bone_block") {
+    fail;
+}
+
+str mainblock = "minecraft:bone_block";
+
+num pi = 3.14159;
+
+num height = 6 + randomInt(1);
+num archStraightTopSegments = 2 + randomInt(1);
+num circleSegments = 120;
+
+num radius = height - 3;
+num start = -45;
+num segmentDist = 6;
+
+num topSegmentLength = 4;
+num zOffset = 1;
+num topAngle = 30 * pi / 180;
+
+
+num Z = originZ();
+num offset = cos(Z / 20) * 10;
+
+// base pillar
+for(num i = height - 2 - randomInt(3); i <= height; i = i + 1) {
+    block(0, i, 0, mainblock, false);
+}
+
+// top arch stretch
+for(num i = 1; i <= archStraightTopSegments; i = i + 1) {
+    num offsetAngle = i * offset * 0.05;
+    block(i, height, offsetAngle, mainblock, false);
+    block(-i, height, -offsetAngle, mainblock, false);
+}
+
+// arch itself
+for(num i = start; i <= start + circleSegments; i = i + segmentDist) {
+
+    num angle = i;
+    num x1 = radius * cos(angle * pi / 180);
+    num y1 = radius * sin(angle * pi / 180);
+
+    num x = x1 + archStraightTopSegments / 2;
+
+    num offsetAngle = x * offset * 0.05;
+    num y = y1 + height * 0.4;
+
+    str blocktype = mainblock; 
+    if (randomInt(max(y, 2)) == 0) {
+        blocktype = "minecraft:green_terracotta";
+    }
+
+    block(x, y, offsetAngle, blocktype, false);
+    block(-x, y, -offsetAngle, blocktype, false);
+}
+
+// top cluster
+for(num i = 1; i <= topSegmentLength; i = i + 1) {
+
+    num dz = sin(topAngle);
+    num dx = 0;
+    num dy = cos(topAngle);
+    num offsetAngle = (i * dz) * offset * 0.05;
+
+    block(i * dx - offsetAngle, i * dy + height, i * dz - zOffset, mainblock, false);
+
+    num thickness = 4 - abs((topSegmentLength * 0.4) - i);
+
+    for(num j = 1; j <= thickness; j = j + 1) {
+        num offsetAngleT = (i * dz + j) * offset * 0.05;
+        block(i * dx - offsetAngleT, i * dy + height, i * dz + j - zOffset, mainblock, false);
+    }
+}

@@ -7,20 +7,26 @@ stages:
     
     default-from: ice-cap-flat
     default-to:
-      - ICE_SPIKES: 1
-      - LAND_GLACIER: 1
+      - LAND_GLACIER: 2
+      - FROSTY_FINGERS: 1
+      - FROZEN_FUNGI: 1
     to:
         ice-cap:
-          - SNOWY_MOUNTAINS: 1
+          - SNOWY_MOUNTAINS: 2
+          - MOUNTAIN_MIRRORS: 1
         ice-cap-highlands:
-          - SNOWY_MOUNTAINS: 1
+          - SNOWY_MOUNTAINS: 2
+          - MOUNTAIN_MIRRORS: 1
         
         tundra-flat:
           - TUNDRA: 1
+          - TUNDRA_TRACKS: 1
         tundra:
           - TUNDRA: 1
+          - TUNDRA_TRACKS: 1
         tundra-highlands:
           - SNOWY_MOUNTAINS: 1
+          - ALPINE_ASCENDANCY: 1
         
         polar-coast-flat:
           - FROZEN_BEACH: 1
@@ -44,13 +50,15 @@ stages:
           - FROZEN_OCEAN: 1
           - FROZEN_OCEAN_OVERHANGS: 1
         polar-ocean:
-          - FROZEN_OCEAN: 1
-          - FROZEN_OCEAN_SLOPES: 1
-          - ICEBERG_OCEAN: 1
+          - FROZEN_OCEAN: 3
+          - FROZEN_OCEAN_SLOPES: 3
+          - ICEBERG_OCEAN: 2
+          - ARCTIC_ARCHES: 1
         polar-deep-ocean:
-          - FROZEN_DEEP_OCEAN: 1
-          - FROZEN_DEEP_OCEAN_VENTS: 1
+          - FROZEN_DEEP_OCEAN: 3
+          - FROZEN_DEEP_OCEAN_VENTS: 2
           - FROZEN_DEEP_DEPTHS: 1
+          - ABYSSAL_ALLEYS: 1
 
   
         boreal-hot-flat:
@@ -69,7 +77,7 @@ stages:
           - FLOWERING_AUTUMNAL_FOREST: 1
           - BIRCH_FOREST: 1
         boreal-warm:
-          - REDWOOD_FOREST: 1
+          - TALL_TIMBERLAND: 1
           - TAIGA: 5
         boreal-warm-highlands:
           - MOUNTAINS: 1
@@ -145,9 +153,10 @@ stages:
           - COLD_OCEAN: 1
           - COLD_OCEAN_SLOPES: 1
         boreal-deep-ocean:
-          - COLD_DEEP_OCEAN: 1
-          - COLD_DEEP_OCEAN_VENTS: 1
+          - COLD_DEEP_OCEAN: 3
+          - COLD_DEEP_OCEAN_VENTS: 2
           - COLD_DEEP_DEPTHS: 1
+          - ABYSSAL_ALLEYS: 1
 
         temperate-hot-dry-flat:
           - PALM_FOREST: 1
@@ -173,13 +182,14 @@ stages:
 
         temperate-hot-flat:
           - PLAINS: 1
-          - ALIEN_MARSH: 1
         temperate-hot:
           - WOODED_BUTTES: 1
           - TEMPERATE_OVERPASS: 1
+          - VERDANT_VALLEYS: 1
+          - ROCKY_REFUGE: 1
         temperate-hot-highlands:
           - HIGHLANDS: 1
-          - TEMPERATE_ALPHA_MOUNTAINS: 1
+          - _plateao: 1
           - TEMPERATE_MOUNTAINS: 1
 
         temperate-warm-flat:
@@ -189,6 +199,9 @@ stages:
           - DARK_FOREST: 1
           - SAKURA_GROVE: 1
           - WOODED_BUTTES: 1
+          - _secluded_valleys: 1
+          - _pillow_plains: 1
+          - FOSSILIZED_FENLANDS: 1
         temperate-warm:
           - FLOWERING_FOREST: 1
           - RAINFOREST: 1
@@ -196,10 +209,14 @@ stages:
           - DARK_FOREST: 1
           - SAKURA_GROVE: 1
           - WOODED_BUTTES: 1
+          - SCARLET_SANCTUARY: 1
         temperate-warm-highlands:
-          - HIGHLANDS: 1
-          - TEMPERATE_ALPHA_MOUNTAINS: 1
-          - TEMPERATE_MOUNTAINS: 1
+          - HIGHLANDS: 2
+          - BLACK_FOREST: 1
+          - GLOOMY_GORGE: 1
+          - WHITE_WALLOWS: 1
+          - SAKURA_STREAMS: 1
+          - TEMPERATE_MOUNTAINS: 3
 
         temperate-cold-flat:
           - FLOWERING_FOREST: 1
@@ -208,6 +225,11 @@ stages:
           - DARK_FOREST: 1
           - SAKURA_GROVE: 1
           - WOODED_BUTTES: 1
+          - _secluded_valleys: 1
+          - _pillow_plains: 1
+          - FOSSILIZED_FENLANDS: 1
+          - BAMBOO_BASIN: 1
+          - SCARLET_SANCTUARY: 1
         temperate-cold:
           - FLOWERING_FOREST: 1
           - RAINFOREST: 1
@@ -215,18 +237,22 @@ stages:
           - DARK_FOREST: 1
           - SAKURA_GROVE: 1
           - WOODED_BUTTES: 1
+          - BAMBOO_BASIN: 1
         temperate-cold-highlands:
-          - HIGHLANDS: 1
-          - TEMPERATE_ALPHA_MOUNTAINS: 1
-          - TEMPERATE_MOUNTAINS: 1
+          - HIGHLANDS: 2
+          - BLACK_FOREST: 1
+          - GLOOMY_GORGE: 1
+          - WHITE_WALLOWS: 1
+          - SAKURA_STREAMS: 1
+          - TEMPERATE_MOUNTAINS: 3
 
         temperate-coast-flat:
-          - BEACH: 1
-          - SHRUB_BEACH: 1
+          - BEACH: 3
+          - SHRUB_BEACH: 3
         temperate-coast:
-          - TEMPERATE_SEA_ARCHES: 1
+          - TEMPERATE_SEA_ARCHES: 3
         temperate-coast-highlands:
-          - TEMPERATE_SEA_ARCHES: 1
+          - TEMPERATE_SEA_ARCHES: 3
 
         temperate-mesa:
           - TEMPERATE_MESA: 1
@@ -245,29 +271,35 @@ stages:
           - ROCKY_SHALLOW_OCEAN: 1
           - OCEAN_OVERHANGS: 1
         temperate-ocean:
-          - OCEAN: 1
-          - OCEAN_SLOPES: 1
+          - OCEAN: 3
+          - OCEAN_SLOPES: 3
+          - STONEGATE_SEAS: 1
         temperate-deep-ocean:
-          - DEEP_OCEAN: 1
-          - DEEP_OCEAN_VENTS: 1
+          - DEEP_OCEAN: 3
+          - DEEP_OCEAN_VENTS: 2
           - DEEP_DEPTHS: 1
+          - ABYSSAL_ALLEYS: 1
 
         # Red hot desert
         hot-desert-flat-red:
           - ARID_SPIKES: 1
           - BADLANDS: 1
           - BADLANDS_BUTTES: 1
+          - BADLANDS_BALCONIES: 1
           - RED_DESERT: 1
           - SALT_FLATS: 1
         hot-desert-red:
-          - ARID_SPIKES: 1
-          - BADLANDS: 1
-          - BADLANDS_BUTTES: 1
-          - RED_DESERT: 1
+          - ARID_SPIKES: 2
+          - BADLANDS: 2
+          - BADLANDS_BUTTES: 2
+          - BADLANDS_BALCONIES: 2
+          - ARID_ARBORETUM: 1
+          - RED_DESERT: 2
         hot-desert-highlands-red:
           - ARID_SPIKES: 1
           - BADLANDS: 1
           - BADLANDS_BUTTES: 1
+          - BADLANDS_BALCONIES: 1
       
         # Orange hot desert
         hot-desert-flat-orange:
@@ -280,11 +312,11 @@ stages:
 
         # White hot desert
         hot-desert-flat-white:
-          - DESERT: 4
+          - _desert: 4
           - PEARLESCENT_DESERT: 1
           - SALT_FLATS: 1
         hot-desert-white:
-          - DESERT: 1
+          - _desert: 1
           - DESERT_PILLARS: 1
           - DESERT_SPIKES: 1
           - DESERT_SPIKES_GOLD: 1
@@ -337,9 +369,12 @@ stages:
         cold-desert:
           - SNOWY_DUNES: 1
           - SNOWY_BADLANDS: 1
+          - SNOWY_SPIRES: 1
         cold-desert-highlands:
           - SNOWY_MOUNTAINS: 1
           - SNOWY_BADLANDS: 1
+          - SNOWY_SPIRES: 1
+          - BARE_BOULDERFIELDS: 1
 
         cold-steppe-flat:
           - COLD_STEPPE: 1
@@ -366,7 +401,9 @@ stages:
           - TERRACOTTA_SEA_CAVES: 1
 
         desert-mesa:
-          - DESERT_MESA: 1
+          - DESERT_MESA: 4
+          - MESA_MONUMENTS: 1
+          - CARVING_CREAKS: 2
         
         desert-crater-lake:
           - todo: 1
@@ -378,13 +415,16 @@ stages:
           - BAMBOO_JUNGLE: 1
           - JUNGLE: 1
           - ROCKY_JUNGLE: 1
+          - LUSH_LOOPS: 1
         tropical-rainforest:
           - BAMBOO_JUNGLE: 1
           - BAMBOO_PONDS: 1
           - JUNGLE: 1
           - ROCKY_JUNGLE: 1
+          - LUSH_LOOPS: 1
         tropical-rainforest-highlands:
           - OVERGROWN_CLIFFS: 1
+          - CANOPY_CASCADES: 1
 
         tropical-monsoon-flat:
           - DRY_FOREST: 1
@@ -397,11 +437,13 @@ stages:
           - MONSOON_FOREST: 1
 
         tropical-savanna-dry-flat:
-          - GRASS_SAVANNA: 1
-          - SAVANNA: 1
+          - GRASS_SAVANNA: 2
+          - SAVANNA: 2
+          - WATERY_WILDS: 1
         tropical-savanna-dry:
-          - GRASS_SAVANNA: 1
-          - SAVANNA: 1
+          - GRASS_SAVANNA: 2
+          - SAVANNA: 2
+          - WATERY_WILDS: 1
         tropical-savanna-dry-highlands:
           - SAVANNA_OVERHANGS: 1
 
@@ -416,8 +458,12 @@ stages:
           - MUDDY_COASTS: 1
           - MANGROVE_SWAMP: 1
           - PALM_BEACH: 1
-        tropical-coast: LUSH_SEA_CAVES
-        tropical-coast-highlands: LUSH_SEA_CAVES
+        tropical-coast: 
+          - LUSH_SEA_CAVES: 3
+          - CANOPY_CASCADES: 1
+        tropical-coast-highlands:
+          - LUSH_SEA_CAVES: 3
+          - CANOPY_CASCADES: 1
 
         tropical-mesa:
           - TROPICAL_MESA: 1
@@ -442,6 +488,8 @@ stages:
           - TROPICAL_OCEAN_SLOPES: 1
           - CORAL_OCEAN_SLOPES: 1
         hot-deep-ocean:
-          - TROPICAL_DEEP_OCEAN: 1
-          - TROPICAL_DEEP_OCEAN_VENTS: 1
+          - TROPICAL_DEEP_OCEAN: 3
+          - TROPICAL_DEEP_OCEAN_VENTS: 2
           - TROPICAL_DEEP_DEPTHS: 1
+          - ABYSSAL_ALLEYS: 1
+

@@ -1,0 +1,79 @@
+id: CARVING_CREAKS
+type: BIOME
+vanilla: minecraft:badlands
+extends: [ CARVING_LAND, BASE ]
+
+color: $biomes/colors.yml:CRACKED_BADLANDS_PLATEAU
+
+vars: &variables
+  floor: 67
+  base: 110
+  height: 3
+  terraceCount: 15
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      -y + base + height * baseRandom(x,z)
+      - min(terrace(easeInOut(max(0, -abs(rivers(x,z)) + 0.5)) * terraceCount, 9) / terraceCount * 200, base - floor)
+      - max(0, -abs(rivers(x,z)) + 0.23)  * 45
+    functions:
+      easeInOut:  # only for range 0-1
+        arguments: [x]
+        expression: x * x * (3.0 - 2.0 * x)
+      terrace:
+        arguments: [x, terraceStrength]
+        expression: round(x) + 0.5 * (2*(x - round(x)))^terraceStrength
+    samplers:
+      rivers:
+        dimensions: 2
+        type: OPEN_SIMPLEX_2
+        frequency: ${customization.yml:biomeSpread.riverScale}
+      baseRandom:
+        dimensions: 2
+        type: OPEN_SIMPLEX_2
+        frequency: 0.01
+        salt: 20
+
+slant-depth: 4
+
+slant:
+  - threshold: 0
+    palette:
+      - RED_SAND: 319
+      - SAND: 64
+  - threshold: 3
+    palette:
+      - BLOCK:minecraft:orange_terracotta: 319
+      - BLOCK:minecraft:terracotta: 108
+      - BLOCK:minecraft:yellow_terracotta: 106
+      - BLOCK:minecraft:brown_terracotta: 104
+      - BLOCK:minecraft:pink_terracotta: 101
+      - BLOCK:minecraft:yellow_terracotta: 97
+      - BLOCK:minecraft:terracotta: 94
+      - BLOCK:minecraft:light_gray_terracotta: 90
+      - BLOCK:minecraft:white_terracotta: 85
+      - BLOCK:minecraft:terracotta: 82
+      - BLOCK:minecraft:orange_terracotta: 79
+      - BLOCK:minecraft:yellow_terracotta: 76
+      - BLOCK:minecraft:terracotta: 70
+      - SAND: 63
+
+palette:
+  - RED_SAND: 319
+  - SAND: 64
+  - << meta.yml:palette-bottom
+
+features:
+  flora:
+    - CACTUS_SPARSE
+    - DEAD_BUSHES
+  trees:
+    - OAK_BUSH_PATCHES
+    - DEAD_TREES_SPARSE
+  landforms:
+    - GRANITE_BOULDERS
+    - SMALL_GRANITE_BOULDER_PATCHES

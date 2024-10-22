@@ -1,0 +1,15 @@
+num maxHeight = 20;
+
+str topBlock = "minecraft:smooth_stone";
+str wall = "minecraft:stone_bricks";
+str fence = "minecraft:spruce_fence";
+
+block(0, 0, 0, topBlock);
+block(0, 1, 0, fence);
+for(num i = 1; i < maxHeight; i = i + 1) {
+    str blockID = getBlock(0, -i, 0);
+    if (blockID != "minecraft:air") {
+        break;
+    }
+    block(0, -i, 0, wall);
+}

@@ -1,0 +1,94 @@
+id: BADLANDS_BALCONIES
+type: BIOME
+vanilla: minecraft:badlands
+color: $biomes/colors.yml:ERODED_BADLANDS_BUTTES
+extends: [ CARVING_LAND, BASE ]
+
+tags:
+  - USE_BAD_BALCOONIES_RIVER
+
+colors:
+  grass: 0xBDB753
+  foliage: 0xADA42A
+  water: 0xCDE6FF
+  water-fog: 0xCDE6FF
+
+vars: &variables
+  base: 75
+  height: 54
+  variationHeight: 4
+  terraceHeight: 2.5  // inverted
+  terraceThinness: 3.3
+  terraceStrength: 13
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      // positive / higher = solid
+      -y + base + (height / 2)
+      + lerp(mountainBasicShape(x,z) * height, 
+        -10, lerp(terracingMask(x,z), 
+          0.2, mountainResult(x,z), 
+          -0.2, mountainBasicShape(x,z) * height + vallyNoise(x,z) * variationHeight * 4
+          ),
+        -25, vallyNoise(x,z) * variationHeight - 30
+      )
+    samplers:
+      mountainBasicShape: &baseShape
+        dimensions: 2
+        type: OPEN_SIMPLEX_2S
+        frequency: ${customization.yml:biomeSpread.mountainFrequency}
+      vallyNoise:
+        dimensions: 2
+        type: FBM
+        sampler:
+          type: OPEN_SIMPLEX_2S
+          frequency: 0.02
+        octaves: 2
+        lacunarity: 3
+        gain: 0.3
+      terracingMask:
+        dimensions: 2
+        type: CELLULAR
+        frequency: 0.025
+        jitter: 0.7    
+        return: CellValue        
+      mountainResult:
+        dimensions: 2
+        type: EXPRESSION
+        variables: *variables
+        expression: |
+          terrace(mountainBasicShape(x,z) * 2.5, 7) * height / 2.5
+        functions:
+          terrace:
+            arguments: [x, terraceStrength]
+            expression: round(x) + 0.5 * (2*(x - round(x)))^terraceStrength
+        samplers:
+          mountainBasicShape: *baseShape
+
+slant-depth: 20
+
+slant:
+  - threshold: 0.7
+    palette:
+      - TERRACOTTA_STRATA_RED: 319
+      - TERRACOTTA_STRATA: 98
+      - TERRACOTTA_STRATA_VERTICAL: 82
+      - SAND: 63
+
+palette:
+  - WOODED_BADLANDS: 319
+  - WOODED_BADLANDS_LOW: 75
+  - SAND: 64
+  - << meta.yml:palette-bottom
+
+features:
+  flora:
+    - GRASS_SPARSE
+  trees:
+    - BADLANDS_OAK_TREES
+    - OAK_BUSH_PATCHES
+    - DEAD_TREES_SPARSE

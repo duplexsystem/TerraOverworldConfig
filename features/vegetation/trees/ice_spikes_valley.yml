@@ -1,0 +1,39 @@
+id: ICE_SPIKES_VALLEY
+type: FEATURE
+
+distributor:
+  type: PADDED_GRID
+  width: 7
+  padding: 3
+  salt: 7234
+
+locator:
+  type: AND
+  locators:
+    - type: TOP
+      range: &range
+        min: ${meta.yml:ocean-level} - 1
+        max: 83
+    - type: PATTERN
+      range: *range
+      pattern:
+        type: MATCH_SET
+        blocks:
+          - minecraft:air
+          - minecraft:snow
+        offset: 0
+    - type: PATTERN
+      range: *range
+      pattern:
+        type: MATCH_SET
+        blocks:
+          - minecraft:snow_block
+        offset: -1
+
+
+structures:
+  distribution:
+    type: CONSTANT
+  structures:
+    - ice_spike: 1
+  

@@ -1,0 +1,30 @@
+id: SINKHOLE_FOREST
+type: BIOME
+vanilla: minecraft:plains
+color: $biomes/colors.yml:PLAINS
+extends: [ SINKHOLE_BASE ]
+
+slant:
+  - threshold: 0.5
+    palette:
+      - BLOCK:minecraft:stone: 319
+      - MOSSY_COBBLESTONE_STONE: 71
+
+slant-depth: 40
+
+palette:
+  - GRASS: 319
+  - DEEPSLATE: -54
+  - BEDROCK: $meta.yml:bedrock-top
+  - BLOCK:minecraft:bedrock: $meta.yml:bottom-y
+
+features:
+  global-preprocessors:
+    - LAVA_FLOOR
+    - UNDERGROUND_LAVA_COLUMNS
+    - CONTAIN_FLOATING_WATER
+    - TEXTURED_STONE_SLANT
+  flora:
+    - GRASS_CAVES
+  trees:
+    - SINKHOLE_TREES

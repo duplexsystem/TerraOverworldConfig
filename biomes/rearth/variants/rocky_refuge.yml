@@ -1,0 +1,133 @@
+id: ROCKY_REFUGE
+type: BIOME
+vanilla: minecraft:plains
+extends: [ CARVING_LAND, BASE ]
+
+tags:
+  - USE_RIVER
+  
+colors:
+  sky: 0xE2D3B3
+  fog: 0xE2D7C3
+  grass: 0x70E66D
+  foliage: 0x70E66D
+  water: 0x3F76E4
+  water-fog: 0x50533
+
+vars: &variables
+  base: 77
+  height: 22
+  pillarHeight: 50
+  pillarCutoff: 0.95
+  pillarFlatness: 1.7
+  pillarVariation: 0.03
+  bendFactor: 0.8
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      -y + base + height * terrace(surfaceOffset(x,z) * 4, 3) / 4
+      + if (y > base - 15 && y < base + pillarHeight * 1.3, 
+        max(pillars(x + yCurve(y, 0), y, z + yCurve(y, 0)), 
+        max(pillars(x - yCurve(y, 0), y, z + yCurve(y, 0)), pillars(x - yCurve(y, 0) + 5000, y, z - yCurve(y, 0)))),
+        0)
+    functions:
+      terrace:
+        arguments: [x, terraceStrength]
+        expression: round(x) + 0.5 * (2*(x - round(x)))^terraceStrength
+    samplers:
+      yCurve:
+        dimensions: 2
+        type: EXPRESSION
+        variables: *variables
+        expression: |
+          curve(1 - normalizeY(x, base, pillarHeight)) * pillarHeight * bendFactor
+        functions:
+          normalizeY:
+            arguments: [y, base, height]
+            expression: (y - base) / height
+          curve:
+            arguments: [x]
+            expression: if (x < 0.1, 0.35, 2.428571*x - 1.428571*x^2)
+      pillars:
+        dimensions: 3
+        type: EXPRESSION
+        variables: *variables
+        expression: |
+          if(pillarRand(x,z) > 0.7,
+          clamp(
+            (-pillars(x,z) 
+              - pillarCutoff 
+              - widthVariation(y, x / 4 + z / 3) * pillarVariation 
+              + (y - base) / pillarHeight / 8
+              + max(base - y + 4, 0) / 200
+              - (1 - abs(base + pillarHeight - y + 25) / pillarHeight)^5
+              // + (min(0, base + pillarHeight - y + 6))^3
+              - max(-abs(erosion(x,y,z)) + 0.3, 0) * 0.095
+              )
+              * pillarHeight
+              * (1 / (1 - pillarCutoff)) * pillarFlatness,
+            -2, pillarHeight * 1.2), 0)
+        samplers:
+          pillars: &pillars
+            dimensions: 2
+            type: CELLULAR
+            frequency: 0.009
+          erosion:
+            dimensions: 3
+            type: OPEN_SIMPLEX_2S
+            frequency: 0.06
+          widthVariation:
+            dimensions: 2
+            type: FBM
+            sampler:
+              type: OPEN_SIMPLEX_2S
+              frequency: 0.05
+            octaves: 2
+            lacunarity: 2
+            gain: 0.5
+          pillarRand:
+            <<: *pillars
+            return: CellValue
+      pillarRand:
+        <<: *pillars
+        return: CellValue
+      surfaceOffset:
+        dimensions: 2
+        type: FBM
+        sampler:
+          type: OPEN_SIMPLEX_2S
+          frequency: 0.002
+        octaves: 3
+        lacunarity: 3.5
+        gain: 0.5
+
+slant-depth: 40
+
+slant:
+  - threshold: 0.9
+    palette:
+      - TERRACOTTA_STRATA_RED: 319
+      - TERRACOTTA_STRATA: 98
+      - TERRACOTTA_STRATA_VERTICAL: 82
+      - SAND: 63
+
+palette:
+  - GRASS_VARIATION: 319
+  - SAND: 64
+  - << meta.yml:palette-bottom
+
+features:
+  landforms:
+    - SPARSE_GIANT_PILLARS
+    - SMALL_BOULDER_PATCHES
+    - BOULDERS
+  flora:
+    - LARGE_LEAF_VINES
+    - WHITE_FLOWER_COVER
+    - GRASS
+  trees:
+    - SPARSE_TEMPERATE_TREE_PATCHES

@@ -1,0 +1,42 @@
+id: TUNDRA_TRACKS
+type: BIOME
+vanilla: minecraft:snowy_plains
+extends: [ EQ_LOWLAND_HILLS, CARVING_LAND, BASE ]
+
+color: $biomes/colors.yml:SAVANNA
+
+colors:
+  sky: 0xe4f1ff
+  fog: 0xbacddc
+  grass: 0xe9f2e2
+  foliage: 0xd2f7e9
+  water: 0x3181ff
+  water-fog: 0x2756ab
+  
+tags:
+  - USE_RIVER
+
+palette:
+  - GRASS_SNOW_MIX: 319
+  - BLOCK:minecraft:blue_ice: 62
+  - MUDDY_BEACH: 61
+  - << meta.yml:palette-bottom
+
+slant:
+  - threshold: 0.75
+    palette:
+      - BLOCK:minecraft:stone: 319
+      - << meta.yml:palette-bottom
+
+features:
+  landforms:
+    - SMALL_GRANITE_BOULDER_PATCHES
+  slabs:
+    - SNOW_LAYERS
+  trees:
+    - COLD_EVERGREEN_TREES
+  preprocessors:
+    - POWDER_SNOW_DEPOSITS
+    - ICE_COASTLINE
+  postprocessors:
+    - TREE_SNOW

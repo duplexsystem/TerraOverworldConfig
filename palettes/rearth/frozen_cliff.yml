@@ -1,0 +1,11 @@
+id: FROZEN_CLIFF
+type: PALETTE
+
+layers:
+  - materials:
+      - minecraft:blue_ice: 3
+      - minecraft:stone: 2
+    layers: 2
+    sampler:
+      type: OPEN_SIMPLEX_2
+      frequency: 0.02

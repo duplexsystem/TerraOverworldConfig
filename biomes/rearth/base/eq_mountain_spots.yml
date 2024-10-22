@@ -1,0 +1,54 @@
+id: EQ_MOUNTAIN_SPOTS
+type: BIOME
+abstract: true
+
+vars: &variables
+  base: 100
+  height: 55
+  clearingOffset: 0.7 # increasing this will result in more clearings / flat spots
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      -y + base + height * 
+      if (clearingStrength(x,0,z) > clearingOffset, 
+        lerp(clearingDepth(x,0,z), -0.8, flatClearings(x, 0, z), -0.45, surfaceOffset(x,z)), 
+        surfaceOffset(x,z))
+    samplers:
+      surfaceOffset: &baseFBM
+        dimensions: 2
+        type: FBM
+        sampler:
+          type: OPEN_SIMPLEX_2S
+          frequency: ${customization.yml:biomeSpread.mountainFrequency}
+        octaves: 3
+        lacunarity: 2
+        gain: 0.5
+      clearingDepth:
+        dimensions: 3
+        type: CELLULAR
+        frequency: 0.022
+        jitter: 0.7
+      clearingStrength:
+        dimensions: 3
+        type: CELLULAR
+        frequency: 0.022
+        jitter: 0.7
+        return: CellValue
+      flatClearings:
+        dimensions: 3
+        type: CELLULAR
+        frequency: 0.022
+        jitter: 0.7
+        return: NoiseLookup
+        lookup:
+          dimensions: 3
+          type: EXPRESSION
+          variables: *variables
+          expression: |
+            surfaceOffset(x,z)
+          samplers:
+            surfaceOffset: *baseFBM

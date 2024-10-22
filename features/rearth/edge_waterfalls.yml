@@ -1,0 +1,35 @@
+id: EDGE_WATERFALLS
+type: FEATURE
+
+distributor:
+  type: PADDED_GRID
+  width: 5
+  padding: 1
+  salt: 5932
+
+locator:
+  type: AND
+  locators:
+    - type: PATTERN
+      range: &range
+        min: ${meta.yml:ocean-level} + 30
+        max: ${meta.yml:ocean-level} + 105
+      pattern:
+        type: AND
+        patterns:
+          - type: MATCH_AIR
+            offset: 0
+          - type: MATCH_SOLID
+            offset: 1
+    - type: ADJACENT_PATTERN
+      range: *range
+      pattern:
+        type: MATCH
+        block: minecraft:stone
+        offset: 1
+
+structures:
+  distribution:
+    type: CONSTANT
+  structures: waterfall
+      

@@ -1,0 +1,53 @@
+id: CAVE_CHAINS
+type: FEATURE
+
+
+vars: &variables
+  spacing: 10
+
+distributor:
+  type: AND
+  distributors:
+    - type: PADDED_GRID
+      width: 2
+      padding: 1.3
+      salt: 7421
+    - type: SAMPLER # only spawn on island edges
+      threshold: 1  # matches everthing UNDER this
+      sampler:
+        type: PROBABILITY
+        sampler:
+          type: EXPRESSION
+          variables: *variables
+          expression: |
+            if (platforms(x,z) > -0.91 && platforms(x,z) < -0.87, 0, 2)
+          samplers:
+            platforms:
+              dimensions: 2
+              type: DOMAIN_WARP
+              amplitude: 3
+              warp:
+                type: OPEN_SIMPLEX_2
+                frequency: 0.02
+              sampler:
+                type: CELLULAR
+                frequency: 0.05
+    - type: SAMPLER # only spawn near center
+      threshold: -0.94  # matches everthing UNDER this
+      sampler:
+        type: CELLULAR
+        frequency: 0.005
+        jitter: 0.1
+        salt: 24
+
+locator:
+  type: SURFACE
+  range:
+    min: -7
+    max: -5
+
+structures:
+  distribution:
+    type: CONSTANT
+  structures: 
+    - chain_to_ceiling: 1

@@ -1,0 +1,29 @@
+id: GRANITE_BOULDERS_CANYON
+type: FEATURE
+
+distributor:
+  type: AND
+  distributors:
+    - type: PADDED_GRID
+      width: 8
+      padding: 5
+      salt: 2315
+    - type: SAMPLER
+      sampler:
+        type: PROBABILITY
+        sampler:
+          type: OPEN_SIMPLEX_2
+          salt: 8244
+          frequency: 0.01
+      threshold: 0.2
+
+locator:
+  type: SURFACE
+  range:
+    min: ${customization.yml:biomeSpread.canyons.minY}
+    max: 64
+
+structures:
+  distribution:
+    type: CONSTANT
+  structures: granite_boulder

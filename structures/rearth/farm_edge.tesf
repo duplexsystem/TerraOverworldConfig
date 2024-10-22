@@ -1,0 +1,6 @@
+str topBlock = "minecraft:mossy_cobblestone_slab";
+str botBlock = "minecraft:mud";
+
+block(0, 0, 0, topBlock);
+block(0, -1, 0, botBlock);
+block(0, -2, 0, botBlock);

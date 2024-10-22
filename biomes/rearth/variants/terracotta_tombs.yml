@@ -1,0 +1,65 @@
+id: TERRACOTTA_TOMBS
+type: BIOME
+extends: [ ORES_DEFAULT ]
+vanilla: minecraft:lush_caves
+color: $biomes/colors.yml:DRIPSTONE_CAVES
+
+vars: &variables
+  base: -30
+  pillarHeight: 38
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      clamp(
+        max((caves(x, y * 2, z) + 0.88) * 50 + wallOffset(x,y,z) * 3, -5)
+        + max((-pillars(x,z) -0.95 + abs(pillarWidthRand(y, x / 20 + z / 24)) * 0.033) * 170
+          + min(base - y + pillarHeight * (basepillarsCenter(x,z) * 0.4 + 1), 0)^3 * 3, 0)
+         , -10, 10) * 16
+      // + max((4.9 - abs(middleHeight - y)), 0) * (-platforms(x,z) - 0.29), -10, 10) * 16
+      
+    functions:
+      clamp:
+        arguments: [x, a, b] # clamps x between a (low) and b (high)
+        expression: min(max(x, a), b)
+    samplers:
+      caves:
+        dimensions: 3
+        type: CELLULAR
+        frequency: 0.005
+        jitter: 0.05
+        salt: 24
+      pillars: &pillarConf
+        dimensions: 2
+        type: CELLULAR
+        frequency: 0.037
+      basepillarsCenter:
+        <<: *pillarConf
+        return: CellValue
+      pillarWidthRand:
+        dimensions: 2
+        type: OPEN_SIMPLEX_2S
+        frequency: 0.3
+      wallOffset:
+        dimensions: 3
+        type: FBM
+        sampler:
+          type: OPEN_SIMPLEX_2S
+          frequency: 0.025
+        octaves: 2
+        lacunarity: 2.8
+        gain: 0.5
+
+palette:
+  - BADLANDS_PILLARS_TERRACOTTA_CAVE: 319
+  - RED_SAND: -28
+  - << meta.yml:palette-bedrock
+
+features:
+  global-preprocessors:
+    - CAVE_GLOW_LICHEN
+  flora:
+    - CAVE_GLOW_BERRIES

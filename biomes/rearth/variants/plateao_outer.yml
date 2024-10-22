@@ -1,0 +1,68 @@
+id: FOLIAGE_FORTRESS_OUTER
+type: BIOME
+vanilla: minecraft:savanna
+extends: [ CARVING_LAND, BASE ]
+
+color: $biomes/colors.yml:SAVANNA
+
+colors:
+  grass: 0x82BC6D
+  foliage: 0x65A949
+  water: 0xE4ECF
+  water-fog: 0xC0D8FF
+
+tags:
+  - USE_RIVER
+
+vars: &variables
+  base: 69
+  height: 11
+  stepHeight: 4
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      -y + base + height * surfaceOffset(x,z)
+      + clamp(plateous(x,z) * 90, -stepHeight, stepHeight)
+    samplers:
+      plateous:
+        dimensions: 2
+        type: OPEN_SIMPLEX_2S
+        frequency: 0.01
+        salt: 4
+      surfaceOffset:
+        dimensions: 2
+        type: FBM
+        sampler:
+          type: OPEN_SIMPLEX_2S
+          frequency: 0.006
+        octaves: 3
+        lacunarity: 2.4
+        gain: 0.5
+
+palette:
+  - GRASS_MUSHY: 319
+  - MUDDY_BEACH: 63
+  - << meta.yml:palette-bottom
+
+slant:
+  - threshold: 0.75
+    palette:
+      - CALCITE_DIORITE_MIX: 319
+      - << meta.yml:palette-bottom
+
+features:
+  flora:
+    - GRASS
+    - TALL_GRASS
+    - POPPY_PATCH
+    - DANDELION_PATCH
+    - ROSE_BUSH_PATCH
+    - PEONY_PATCH
+    - LILAC_PATCH
+    - LILY_OF_THE_VALLEY_PATCH
+  trees:
+    - ACACIA_TREES

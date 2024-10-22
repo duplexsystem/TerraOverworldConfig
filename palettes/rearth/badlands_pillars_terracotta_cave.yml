@@ -1,0 +1,49 @@
+id: BADLANDS_PILLARS_TERRACOTTA_CAVE
+type: PALETTE
+
+layers:
+  - materials:
+      - minecraft:stone: 2
+      - minecraft:brown_terracotta: 1
+      - minecraft:pink_terracotta: 1
+      - minecraft:terracotta: 2
+      - minecraft:light_gray_terracotta: 1
+      - minecraft:white_terracotta: 2
+      - minecraft:orange_terracotta: 1
+      - minecraft:yellow_terracotta: 2
+      - minecraft:terracotta: 2
+    layers: 4
+
+
+vars: &variables
+  base: 70
+  height: 15
+  stoneDepth: 5
+
+sampler:
+  type: EXPRESSION
+  variables: *variables
+  expression: |
+    if (caves(x, y * 2, z) < -0.9, terracota_rand_height(y - 15, x / 10 + z / 20), 
+      if (wall_variation(x,y,z) > 0, -1, terracota_rand_height(y - 1, x / 8 + z / 19)))
+  samplers:
+    caves:
+      dimensions: 3
+      type: CELLULAR
+      frequency: 0.005
+      jitter: 0.05
+      salt: 24
+    wall_variation:
+      dimensions: 3
+      type: OPEN_SIMPLEX_2S
+      frequency: 0.06
+    terracota_rand_height:
+      dimensions: 2
+      type: FBM
+      sampler:
+        dimensions: 2
+        type: OPEN_SIMPLEX_2S
+        frequency: 0.09
+      octaves: 2
+      lacunarity: 2
+      gain: 0.3

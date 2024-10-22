@@ -1,0 +1,44 @@
+id: GIANT_SAKURA_TREES
+type: FEATURE
+
+distributor:
+  type: AND
+  distributors: 
+  - type: SAMPLER
+    sampler:
+      type: POSITIVE_WHITE_NOISE
+      salt: 13845
+    threshold: 0.1
+  - type: PADDED_GRID
+    width: 50
+    padding: 20
+    salt: 7234
+
+locator:
+  type: AND
+  locators:
+    - type: TOP
+      range: &range
+        min: ${meta.yml:ocean-level} + 10
+        max: $meta.yml:top-y
+    - type: PATTERN
+      range: *range
+      pattern:
+        type: MATCH_SET
+        blocks: $features/vegetation/meta.yml:plantable-blocks
+        offset: -1
+    - type: PATTERN
+      range: *range
+      pattern:
+        type: MATCH_SET
+        blocks:
+          - minecraft:snow
+          - minecraft:air
+        offset: 0
+
+structures:
+  distribution:
+    type: WHITE_NOISE
+    salt: 5011
+  structures:
+    - custom_sakura_tree: 20

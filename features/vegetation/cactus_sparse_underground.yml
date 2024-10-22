@@ -1,0 +1,35 @@
+id: CACTUS_CANYON
+type: FEATURE
+
+distributor:
+  type: SAMPLER
+  sampler:
+    type: POSITIVE_WHITE_NOISE
+    salt: 2586
+  threshold: 0.03
+
+locator:
+  type: AND
+  locators:
+    - type: SURFACE
+      range: &range
+        min: ${customization.yml:biomeSpread.canyons.minY}
+        max: ${customization.yml:biomeSpread.canyons.minY} + 20
+    - type: PATTERN
+      range: *range
+      pattern:
+        type: MATCH_SET
+        blocks:
+          - minecraft:sand
+        offset: -1
+    - type: ADJACENT_PATTERN
+      range: *range
+      match-all: true
+      pattern:
+        type: MATCH_AIR
+        offset: 0
+
+structures:
+  distribution:
+    type: CONSTANT
+  structures: cactus

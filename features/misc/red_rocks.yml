@@ -1,0 +1,45 @@
+id: RED_ROCKS
+type: FEATURE
+
+distributor:
+  type: AND
+  distributors:
+    - type: PADDED_GRID
+      width: 15
+      padding: 5
+      salt: 1923
+    - type: SAMPLER
+      sampler:
+        type: PROBABILITY
+        sampler:
+          type: OPEN_SIMPLEX_2
+          salt: 3119
+          frequency: 0.01
+      threshold: 0.2
+
+locator:
+  type: AND
+  locators:
+    - type: SURFACE
+      range: &range
+        min: ${meta.yml:ocean-level} -2
+        max: $meta.yml:top-y
+    - type: PATTERN
+      range: *range
+      pattern:
+        type: MATCH_SET
+        blocks:
+          - minecraft:sand
+          - minecraft:red_sand
+        offset: -1
+    - type: ADJACENT_PATTERN
+      range: *range
+      match-all: true
+      pattern:
+        type: MATCH_AIR
+        offset: 0
+
+structures:
+  distribution:
+    type: CONSTANT
+  structures: red_rock

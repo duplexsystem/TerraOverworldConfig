@@ -1,0 +1,11 @@
+id: ICE_STONE_MIX_LIGHT
+type: PALETTE
+
+layers:
+  - materials:
+      - minecraft:ice: 1
+      - minecraft:snow_block: 3
+    layers: 2
+    sampler:
+      type: WHITE_NOISE
+      salt: 4972

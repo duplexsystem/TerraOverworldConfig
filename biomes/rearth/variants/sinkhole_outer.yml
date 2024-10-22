@@ -1,0 +1,31 @@
+id: SINKHOLE_OUTER
+type: BIOME
+vanilla: minecraft:plains
+color: $biomes/colors.yml:PLAINS
+extends:
+  - DEPOSITS_DEFAULT
+  - ORES_DEFAULT
+  - CARVING_LAND
+
+vars: &variables
+  base: ${meta.yml:ocean-level} + 5
+
+terrain:
+  sampler:
+    dimensions: 2
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      -y + base
+
+palette:
+  - GRASS: 319
+  - SAND: 64
+  - << meta.yml:palette-bottom
+
+features:
+  global-preprocessors:
+    - LAVA_FLOOR
+    - UNDERGROUND_LAVA_COLUMNS
+    - CONTAIN_FLOATING_WATER
+    - TEXTURED_STONE_SLANT

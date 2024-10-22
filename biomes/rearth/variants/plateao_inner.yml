@@ -1,0 +1,46 @@
+id: FOLIAGE_FORTRESS_INNER
+type: BIOME
+vanilla: minecraft:plains
+extends: [ CARVING_LAND, BASE ]
+
+color: $biomes/colors.yml:SAVANNA
+
+colors:
+  grass: 0x82BC6D
+  foliage: 0x65A949
+  water: 0xE4ECF
+  water-fog: 0xC0D8FF
+
+tags:
+  - USE_PLATEAU_INNER_RIVER
+
+vars: &variables $biomes/rearth/variants/plateao_middle.yml:vars
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      -y + top + cellBase(x,z) * biomeVariationStrength + surfaceOffset(x,z) * surfaceVariationStrength
+    samplers: $biomes/rearth/variants/plateao_middle.yml:terrain.sampler.samplers
+
+palette:
+  - GRASS_VARIATION: 319
+  - << meta.yml:palette-bottom
+
+features:
+  landforms:
+    - SMALL_GRANITE_BOULDER_PATCHES
+  flora:
+    - GRASS
+    - TALL_GRASS
+    - POPPY_PATCH
+    - DANDELION_PATCH
+    - ROSE_BUSH_PATCH
+    - PEONY_PATCH
+    - LILAC_PATCH
+    - LILY_OF_THE_VALLEY_PATCH
+  trees:
+    - MESQUITE_TREES
+    - MIXED_TREES

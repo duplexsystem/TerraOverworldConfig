@@ -1,0 +1,49 @@
+id: FROZEN_FUNGI
+type: BIOME
+vanilla: minecraft:mushroom_fields
+extends: [ EQ_TILTED_PLATEAU, CARVING_LAND, BASE ]
+color: $biomes/colors.yml:MUSHROOM_HILLS
+
+tags:
+  - USE_COLD_FUNGI_RIVER
+
+colors:
+  foliage: 0xa6e2ed
+  grass: 0x2AB2C7
+  water: 0xA298E4
+  water-fog: 0x50533
+
+palette:
+  - SHROOM_SNOW_MIX: 319
+  - MUDDY_BEACH: 63
+  - << meta.yml:palette-bottom
+
+features:
+  preprocessors:
+    - POWDER_SNOW_DEPOSITS
+  slabs:
+    - SNOW_LAYERS
+  trees:
+    - COLD_FUNGI
+  flora:
+    - SMALL_MUSHROOMS
+  landforms:
+    - MOSSY_BOULDERS
+#     - GIANT_BOULDERS
+#   flora:
+#     - GRASS
+#     - TALL_GRASS
+#     - CROSSING_STONE_VINES
+#     - LARGE_LEAF_VINES_UNCOLORED
+#     - TREE_VINES
+#     - POPPY_PATCH
+#     - FERNS
+#     - DANDELION_PATCH
+#     - SMALL_DRIPLEAF
+#     - BIG_DRIPLEAF
+#     - SMALL_MUSHROOMS
+#   trees:
+#     - DEAD_SWAMP_TREES
+#     - DEAD_TREES_SPARSE
+#     - LUSH_FOREST_TREES
+#     - LARGE_MUSHROOMS

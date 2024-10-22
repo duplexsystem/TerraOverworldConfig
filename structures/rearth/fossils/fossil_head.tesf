@@ -1,0 +1,9 @@
+str blockID = getBlock(0, -1, 0);
+if (blockID == "minecraft:bone_block") {
+    fail;
+}
+
+num Z = originZ();
+num offset = cos(Z / 20) * 10;
+
+structure(-offset / 2, 0, -2, "skull_center", "NONE");

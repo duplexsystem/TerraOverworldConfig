@@ -1,0 +1,22 @@
+id: BLANK_DARK_STONE
+type: PALETTE
+
+layers:
+  - materials:
+      - minecraft:air: 1
+      - minecraft:stone: 1
+    layers: 2
+    sampler:
+      type: EXPRESSION
+      expression: |
+        abs(webs(x,z)) - 0.08
+      samplers:
+        webs:
+          dimensions: 2
+          type: OPEN_SIMPLEX_2
+          salt: 2189
+          frequency: 0.03
+  - materials:
+      - minecraft:stone: 1
+    layers: 1
+    

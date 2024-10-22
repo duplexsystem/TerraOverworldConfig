@@ -1,0 +1,20 @@
+id: VARIANT_C
+type: BIOME
+color: $biomes/colors.yml:PLAINS
+
+vanilla: minecraft:plains
+
+colors:
+  grass: 0x91bd59
+  foliage: 0x77ab2f
+  water: 0x44aff5
+  water-fog: 0x44aff5
+
+palette:
+  - BLOCK:minecraft:red_wool: $meta.yml:top-y
+
+
+terrain:
+  sampler:
+    type: EXPRESSION
+    expression: -y + 70

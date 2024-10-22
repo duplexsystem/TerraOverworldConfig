@@ -1,0 +1,28 @@
+id: FOSSIL_OCEAN
+type: FEATURE
+
+distributor:
+  type: PADDED_GRID
+  width: 40
+  padding: 4
+  salt: 5932
+
+locator:
+  type: PATTERN
+  range:
+    min: -55
+    max: -20
+  pattern:
+    type: AND
+    patterns:
+      - type: MATCH
+        block: minecraft:water
+        offset: 0
+      - type: MATCH_SOLID
+        offset: -1
+
+structures:
+  distribution:
+    type: CONSTANT
+  structures: 
+    - fossil_segment_water: 1

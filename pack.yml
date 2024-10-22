@@ -129,6 +129,7 @@ functions:
     - math/functions/interpolation.yml:functions
     - math/functions/maskSmooth.yml:functions
     - math/functions/shelf.yml:functions
+    - math/functions/clamp.yml:functions
 
 samplers:
   "<<":

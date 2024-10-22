@@ -1,0 +1,28 @@
+id: FROZEN_CANYON
+type: PALETTE
+
+layers:
+  - materials:
+      - minecraft:red_sand: 5
+      - minecraft:coarse_dirt: 1
+      - minecraft:snow_block: 4
+      - minecraft:stone: 1
+    layers: 3
+
+sampler:
+  dimensions: 3
+  type: EXPRESSION
+  variables:
+    baseHeight: ${customization.yml:biomeSpread.canyons.minY} - 1
+  expression: if (y < baseHeight, 1, offset(x,z) * 0.9 - 0.1)
+  samplers:
+    offset:
+      dimensions: 2
+      type: DOMAIN_WARP
+      amplitude: 3
+      warp:
+        type: OPEN_SIMPLEX_2
+        frequency: 0.06
+      sampler:
+        type: OPEN_SIMPLEX_2S
+        frequency: 0.03

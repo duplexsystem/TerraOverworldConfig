@@ -1,0 +1,50 @@
+id: EQ_LOWLAND_HILLS
+type: BIOME
+abstract: true
+
+vars: &variables
+  base: 63
+  height: 12
+  terraceCount: 8
+  terraceHeight: 40
+  pathHeight: 20
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      -y + base + max(height * surfaceOffset(x,z)
+      + terrace(max(plateous(x,z) - 0.5, 0) * terraceCount, 999) / terraceCount * terraceHeight,
+      paths(x,z) * pathHeight - 1)
+    functions:
+      terrace:
+        arguments: [x, terraceStrength]
+        expression: round(x) + 0.5 * (2*(x - round(x)))^terraceStrength
+    samplers:
+      paths:
+        dimensions: 2
+        type: EXPRESSION
+        variables: *variables
+        expression: |
+          min(-abs(basic(x,z)) + 0.2, 0.05)
+        samplers:
+          basic:
+            dimensions: 2
+            type: OPEN_SIMPLEX_2
+            frequency: 0.012
+      plateous:
+        dimensions: 2
+        type: OPEN_SIMPLEX_2S
+        frequency: 0.009
+        salt: 4
+      surfaceOffset:
+        dimensions: 2
+        type: FBM
+        sampler:
+          type: OPEN_SIMPLEX_2S
+          frequency: 0.006
+        octaves: 3
+        lacunarity: 2.4
+        gain: 0.5

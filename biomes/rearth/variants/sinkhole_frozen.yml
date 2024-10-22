@@ -1,0 +1,37 @@
+id: SINKHOLE_FROZEN
+type: BIOME
+vanilla: minecraft:snowy_plains
+color: $biomes/colors.yml:SNOWY_PLAINS
+extends: [ SINKHOLE_BASE ]
+
+slant:
+  - threshold: 0.5
+    palette:
+      - BLOCK:minecraft:stone: 319
+      - BLOCK:minecraft:blue_ice: -35
+
+slant-depth: 40
+
+palette:
+  - GRASS: 319
+  - SNOW: -35
+  - DEEPSLATE: -54
+  - BEDROCK: $meta.yml:bedrock-top
+  - BLOCK:minecraft:bedrock: $meta.yml:bottom-y
+
+features:
+  slabs:
+    - SINKHOLE_SNOW_LAYERS
+  global-preprocessors:
+    - LAVA_FLOOR
+    - UNDERGROUND_LAVA_COLUMNS
+    - CONTAIN_FLOATING_WATER
+    - TEXTURED_STONE_SLANT
+  flora:
+    - GRASS_CAVES
+  trees:
+    - ICE_SPIKES_SINKHOLE
+  preprocessors:
+    - ICE_COASTLINE
+  postprocessors:
+    - TREE_SNOW

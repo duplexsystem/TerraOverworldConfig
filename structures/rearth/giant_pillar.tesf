@@ -1,0 +1,56 @@
+num maxHeight = 65;
+num initialWidth = 3 + randomInt(3);
+num width = initialWidth;
+str blockType = "minecraft:stone";
+str blockTypeAlt = "minecraft:mossy_cobblestone";
+num square = randomInt(2);
+num blockChance = 80;
+num altChance = 20;
+
+num segmentA = 4 + randomInt(3);
+num segmentB = 8 + randomInt(6);
+
+num failures = 0;
+num maxFailures = 5;
+
+// begin reinforcements
+
+for(num i = -3; i < maxHeight; i = i + 1) {
+    str blockID = getBlock(0, -i - 1, 0);
+    if ((blockID != "minecraft:air" && blockID != "minecraft:water") && i > 0) {
+        failures = failures + 1;
+
+        width = initialWidth + 1;
+
+        if (failures == maxFailures) {
+            break;
+        }
+    }
+
+    num curWidth = width;
+
+    if (i <= 0) {
+        curWidth = width + 1;
+    }
+
+    if (i > segmentB) {
+        curWidth = curWidth - 2;
+    } else if (i > segmentA) {
+        curWidth = curWidth - 1;
+    }
+
+    num radiusSquared = curWidth * curWidth;
+
+    for(num x = -curWidth; x <= curWidth; x = x + 1) {
+        for(num y = -curWidth; y <= curWidth; y = y + 1) {
+            num distSq = pow2(x)+pow2(y);
+            if ((distSq < radiusSquared - 1) && (randomInt(100) < blockChance)) {
+                if (randomInt(100) < altChance) {
+                    block(x, -i, y, blockTypeAlt, true);
+                } else {
+                    block(x, -i, y, blockType, true);
+                }
+            }
+        }
+    }
+}

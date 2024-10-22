@@ -1,0 +1,18 @@
+id: HIGH_CALCITE_DIORITE
+type: PALETTE
+
+layers:
+  - materials:
+      - minecraft:moss_block: 1
+    layers: 1
+  - materials:
+      - minecraft:mossy_cobblestone: 1
+    layers: 1
+  - materials:
+      - minecraft:calcite: 3
+      - minecraft:diorite: 2
+    layers: 1
+    sampler:
+      type: OPEN_SIMPLEX_2
+      frequency: 0.08
+      salt: 29308

@@ -1,0 +1,8 @@
+num maxHeight = 45;
+for(num i = 0; i < maxHeight; i = i + 1) {
+    str blockID = getBlock(0, i, 0);
+    if (blockID != "minecraft:air") {
+        break;
+    }
+    block(0, i, 0, "minecraft:chain", false);
+}

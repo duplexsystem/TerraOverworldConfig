@@ -1,0 +1,111 @@
+id: PILLOW_PLAINS_INNER
+type: BIOME
+vanilla: minecraft:plains
+color: $biomes/colors.yml:SAKURA_GROVE
+extends:
+  - DEPOSITS_DEFAULT
+  - ORES_DEFAULT
+  # - CARVING_LAND
+
+colors:
+  grass: 0x70E66D
+  water: 0x5DB7EF
+  leaves: 0x70E66D
+
+vars: &variables
+  base: 65
+  height: 5
+  floorOffset: 32
+  pillarBaseThinness: 0.81
+
+
+carving:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    expression: $biomes/abstract/carving/carving_sampler_template.yml:expression
+    samplers: $biomes/abstract/carving/carving_sampler_template.yml:samplers
+    variables:
+      "<<":
+        - biomes/abstract/carving/carving_sampler_template.yml:variables
+      # Variable Overrides:
+      terrainBase: ${customization.yml:terrain-base-y-level} - 32
+      carvingMaxMode: 1 # Use land heightmap
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      // positive / higher = solid
+      max(
+      min(-y + base + surfaceVariation(x,z) * height,   // surface heigh, used on both bottom and top of the pillars
+          -(flatCells(x,z)                               // basic pillar shape
+          + (pillarSizing(x,z) * -0.1) + pillarBaseThinness   // base pillar width
+          + pillarWidth(1.13 - remapY(y, base, floorOffset) * 1.15) * 0.035   // curve to adjust the width of the pillar on the Y-axis
+        ) * 10),
+        -y + base - floorOffset + surfaceVariation(x,z) * height)
+    functions:
+      remapY:
+        arguments: [y, base, depth]
+        expression: (base - y) / depth
+      clamp:
+        arguments: [x, a, b] # clamps x between a (low) and b (high)
+        expression: min(max(x, a), b)
+      pillarWidth:
+        arguments: [x]
+        expression: 8.416667*x - 19.25*x^2 + 10.83333*x^3
+    samplers:
+      surfaceVariation:
+        dimensions: 2
+        type: OPEN_SIMPLEX_2S
+        frequency: 0.011
+      flatCells:
+        dimensions: 2
+        type: CELLULAR
+        frequency: 0.018
+        jitter: 1
+        distance: Euclidean
+      largeFlatAreas:
+        dimensions: 2
+        type: FBM
+        sampler:
+          type: OPEN_SIMPLEX_2S
+          frequency: 0.0055
+        octaves: 3
+        lacunarity: 1
+        gain: 0.5
+      pillarSizing:
+        dimensions: 2
+        type: CELLULAR
+        frequency: 0.018
+        jitter: 1
+        return: CellValue
+
+palette:
+  - GRASS_WHITE_PILLAR: 319
+  - GRASS: 56
+  - << meta.yml:palette-bottom
+
+features:
+  global-preprocessors:
+    - LAVA_FLOOR
+    - UNDERGROUND_LAVA_COLUMNS
+    - CONTAIN_FLOATING_WATER
+    - CAVE_GLOW_LICHEN
+    - TEXTURED_STONE_SLANT
+  trees:
+    - LOW_EVERGREEN_TREES
+  preprocessors:
+    - LUSH_CAVE_WATER_POOLS
+  flora:
+    - GRASS
+    - LOW_GRASS
+    - POPPY_PATCH
+    - OXEYE_DAISY_PATCH
+    - CORNFLOWER_PATCH
+    - ALLIUM_PATCH
+  landforms:
+    - BOULDERS
+    - SMALL_BOULDER_PATCHES

@@ -1,0 +1,41 @@
+id: SCARLET_SANCTUARY
+type: BIOME
+vanilla: minecraft:forest
+extends: [ EQ_TILTED_PLATEAU, CARVING_LAND, BASE ]
+color: $biomes/colors.yml:BAMBOO_JUNGLE
+
+tags:
+  - USE_SCARLET_RIVER
+
+colors:
+  foliage: 0xEC5448
+  grass: 0x599c2c
+  water: 0x5DB7EF
+  water-fog: 0x14a2c5
+
+palette:
+  - GRASS_DENSE_MOSSY: 319
+  - MUDDY_BEACH: 63
+  - << meta.yml:palette-bottom
+
+  
+features:
+  landforms:
+    - GIANT_BOULDERS
+  flora:
+    - GRASS
+    - TALL_GRASS
+    - CROSSING_STONE_VINES
+    - LARGE_LEAF_VINES_UNCOLORED
+    - TREE_VINES
+    - POPPY_PATCH
+    - FERNS
+    - DANDELION_PATCH
+    - SMALL_DRIPLEAF
+    - BIG_DRIPLEAF
+    - SMALL_MUSHROOMS
+  trees:
+    - DEAD_SWAMP_TREES
+    - DEAD_TREES_SPARSE
+    - LUSH_FOREST_TREES
+    - LARGE_MUSHROOMS

@@ -1,0 +1,4 @@
+functions:
+  clamp:
+    arguments: [x, a, b] # clamps x between a (low) and b (high)
+    expression: min(max(x, a), b)

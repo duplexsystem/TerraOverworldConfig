@@ -1,0 +1,42 @@
+id: EQ_CANYON
+type: BIOME
+abstract: true
+
+terrain:
+  sampler:
+    type: EXPRESSION
+    expression: -y + 73
+
+variables: &variables
+  canyonFloor: ${customization.yml:biomeSpread.canyons.minY} + 3
+  canyonStrength: ${customization.yml:biomeSpread.canyons.canyonAmount}
+
+carving:
+  sampler:
+    type: EXPRESSION
+    dimensions: 3
+    variables: *variables
+    expression: |
+      if (y < canyonFloor + base(x * 5, z * 5) * 4, 
+        -1,
+        if (min(max(-mask(x,z * 1.3) - canyonStrength, 0) * 18, 1) * max((-abs(base(x,z)) + 0.3) * 2, 0) * 2 > curve(y + (40 - canyonFloor)) + walls(x,y * 2,z) * 0.15 - 0.1, 
+          1, 
+          -1))
+    functions:
+      curve:
+        arguments: [x]
+        expression: 5.177726 - 0.179325*x + 0.0022188*x^2 - 0.000008863763*x^3
+    samplers:
+      base:
+        dimensions: 2
+        type: OPEN_SIMPLEX_2S
+        frequency: 1 / ${customization.yml:biomeSpread.cellDistance} * 1
+      mask:
+        dimensions: 2
+        type: CELLULAR
+        frequency: 1 / ${customization.yml:biomeSpread.cellDistance} * 0.15
+        seed: 23456345
+      walls:
+        dimensions: 3
+        type: OPEN_SIMPLEX_2S
+        frequency: 0.04

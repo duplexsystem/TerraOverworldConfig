@@ -1,0 +1,27 @@
+id: TREE_SNOW_CANYON
+type: FEATURE
+
+distributor:
+  type: "YES"
+
+locator:
+  type: PATTERN
+  range:
+    min: ${customization.yml:biomeSpread.canyons.minY}
+    max: ${meta.yml:ocean-level} + 1
+  pattern:
+    type: AND
+    patterns:
+      - type: MATCH_AIR
+        offset: 0
+      - type: MATCH_SET
+        blocks:
+          - minecraft:oak_leaves
+          - minecraft:spruce_leaves
+          - minecraft:birch_leaves
+        offset: -1
+
+structures:
+  distribution:
+    type: CONSTANT
+  structures: BLOCK:minecraft:snow

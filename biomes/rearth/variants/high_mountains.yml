@@ -1,0 +1,104 @@
+id: ALPINE_ASCENDANCY
+type: BIOME
+vanilla: minecraft:jagged_peaks
+color: $biomes/colors.yml:PLAINS
+extends: [ CARVING_LAND, BASE ]
+
+tags:
+  - USE_HIGHMOUNTAINS_RIVER
+
+vars: &variables
+  base: 90
+  height: 130
+  peaks: 60
+  warpStrength: 0.29
+  varPackStrength: 128000
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      // positive / higher = solid
+      -y + base
+      + main(mountainBasicShape(x,z), y, x * varPackStrength + z)  // packed into a subsampler to only have to sample mountainBasicShape once, and then we need to pack x&z into one coordinate
+    samplers:
+      mountainBasicShape:
+        dimensions: 2
+        type: DOMAIN_WARP
+        amplitude: 25
+        warp:
+          type: OPEN_SIMPLEX_2S
+          frequency: 0.01
+        sampler:
+          type: OPEN_SIMPLEX_2S
+          frequency: 0.004
+      main:
+        dimensions: 3
+        type: EXPRESSION
+        variables: *variables
+        expression: |
+          lerp(x, 
+            -0.1, lerp(x,
+              -0.2, terrace(x  * 14, 99) / 14 * height * 0.25 - 4,
+              0, (terrace(x * 5, 7) / 4.8 - warping((z - z % varPackStrength) / varPackStrength,y / 2,z % varPackStrength) * warpStrength * 0.7) * height),
+            0.1, lerp(x, 
+              0.6, (x - warping((z - z % varPackStrength) / varPackStrength,y / 1.5,z % varPackStrength) * warpStrength) * height,
+              0.8, x * height * 1.4 + peaks((z - z % varPackStrength) / varPackStrength, z % varPackStrength) * peaks))
+        functions:
+          terrace:
+            arguments: [x, terraceStrength]
+            expression: round(x) + 0.5 * (2*(x - round(x)))^terraceStrength
+        samplers:
+          warping:
+            dimensions: 3
+            type: OPEN_SIMPLEX_2S
+            frequency: 0.034
+            salt: 89745
+          peaks:
+            dimensions: 2
+            type: FBM
+            sampler:
+              type: OPEN_SIMPLEX_2S
+              frequency: 0.02
+            octaves: 2
+            lacunarity: 2
+            gain: 0.5
+
+slant:
+  - threshold: 0.35
+    palette:
+      - BLOCK:minecraft:stone: 319
+
+palette:
+  - GRASS_SNOW_MIX: 319
+  - GRASS: 140
+  - FARMLANDS: 75
+  - GRASS: 69
+  - SAND: 64
+  - << meta.yml:palette-bottom
+
+features:
+  preprocessors:
+    - SHARP_TERRACES
+    - POWDER_SNOW_DEPOSITS
+  slabs:
+    - SNOW_LAYERS
+  landforms:
+    - SHARP_TERRACES_EDGE
+    - FARMLAND_WATER_SPOTS
+    - MOSSY_BOULDERS
+    - SMALL_MOSSY_BOULDER_PATCHES
+    - EDGE_WATERFALLS
+  trees:
+    - SPRUCE_TREES
+  flora:
+    # - FARMLAND_CROPS
+    - GRASS
+    - POPPY_PATCH
+    - OXEYE_DAISY_PATCH
+    - CORNFLOWER_PATCH
+    - ALLIUM_PATCH
+  postprocessors:
+    - TREE_SNOW

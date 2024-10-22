@@ -1,0 +1,25 @@
+id: LAND_MEDIUM_A
+type: BIOME
+extends:
+  - BASE
+color: $biomes/colors.yml:PLAINS
+
+tags:
+  - USE_RIVER
+
+vanilla: minecraft:plains
+
+colors:
+  grass: 0x91bd59
+  foliage: 0x77ab2f
+  water: 0x44aff5
+  water-fog: 0x44aff5
+
+palette:
+  - BLOCK:minecraft:lime_concrete: $meta.yml:top-y
+
+
+terrain:
+  sampler:
+    type: EXPRESSION
+    expression: -y + 70

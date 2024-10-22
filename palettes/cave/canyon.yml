@@ -1,0 +1,30 @@
+id: CANYON
+type: PALETTE
+
+layers:
+  - materials:
+      - minecraft:grass_block: 5
+      - minecraft:mossy_cobblestone: 1
+      - minecraft:deepslate: 1
+      - minecraft:stone: 2
+    layers: 1
+
+
+sampler:
+  dimensions: 2
+  type: DOMAIN_WARP
+  amplitude: 4
+  warp:
+    dimensions: 2
+    type: LINEAR
+    min: -1
+    max: 0.2
+    sampler:
+      type: CELLULAR
+      frequency: 0.15
+  sampler:
+    type: FBM
+    octaves: 2
+    sampler:
+      frequency: 0.05
+      type: OPEN_SIMPLEX_2

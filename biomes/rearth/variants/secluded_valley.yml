@@ -1,0 +1,110 @@
+id: SECLUDED_VALLEY
+type: BIOME
+vanilla: minecraft:plains
+color: $biomes/colors.yml:SUNFLOWER_PRAIRIE
+extends:
+  - DEPOSITS_DEFAULT
+  - ORES_DEFAULT
+  - CARVING_LAND
+
+colors:
+  foliage: 0xffb7c5
+  grass: 0xB6DB61
+  water: 0x5DB7EF
+  water-fog: 0x14a2c5
+
+vars: &variables
+  base: 85
+  height: 4
+  valley_low: 5  
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      // positive / higher = solid
+      min(-y + base + surfaceVariation(x,z) * height, valley(x,y,z) * 10)
+    samplers:
+      valley:
+        type: EXPRESSION
+        dimensions: 3
+        variables: *variables
+        expression: | # higher values -> smaller hole
+          flatCells(x, z / 1.3) + 0.88  // basic 2d cell shape (stretched along z axis)
+          + wallVariation(x,y,z) * 0.04            // move walls around a bit
+          - holeWidth(remapY(clamp(y, valley_low - 10, base), base, valley_low)) * 0.23   // move walls back by a pre-defined curve
+        functions:
+          remapY:
+            arguments: [y, base, valley_low]
+            expression: (base - y) / (base - valley_low)
+          clamp:
+            arguments: [x, a, b] # clamps x between a (low) and b (high)
+            expression: min(max(x, a), b)
+          holeWidth:
+            arguments: [x]
+            expression: 0.4 - 4.975255*x + 20.5358*x^2 - 20.84312*x^3 + 4.582579*x^4
+        samplers:
+          wallVariation:
+            dimensions: 3
+            type: FBM
+            sampler:
+              type: OPEN_SIMPLEX_2S
+              frequency: 0.065
+            octaves: 1
+            lacunarity: 1.5
+            gain: 0.3
+          flatCells:
+            dimensions: 2
+            type: CELLULAR
+            frequency: 0.0065
+            jitter: 0.3
+            distance: Euclidean
+          holeStretch:
+            dimensions: 2
+            type: OPEN_SIMPLEX_2S
+            frequency: 0.0095
+      surfaceVariation:
+        dimensions: 2
+        type: OPEN_SIMPLEX_2
+        frequency: 0.007
+
+slant:
+  - threshold: 0.4
+    palette:
+      - MOSS_TUFF: 319
+      - MOSSY_COBBLESTONE_STONE: 71
+      - BLOCK:minecraft:moss_block: 55
+
+slant-depth: 4
+
+palette:
+  - GRASS: 319
+  - SAND: 64
+  - MUDDY_BEACH: 61
+  - MOSS_TUFF: 50
+  - << meta.yml:palette-bottom
+
+features:
+  global-preprocessors:
+    - LAVA_FLOOR
+    - UNDERGROUND_LAVA_COLUMNS
+    - CONTAIN_FLOATING_WATER
+    - CAVE_GLOW_LICHEN
+    - TEXTURED_STONE_SLANT
+  trees:
+    - VALLEY_GIANT
+    - VALLEY_SAKURA_TREES
+  flora:
+    - LARGE_LEAF_VINES_UNDERGROUND
+    - MOSS_CARPET
+    - VALLEY_PETALS
+    - CAVE_GLOW_BERRIES
+    - CAVE_SPORE_BLOSSOMS
+    - SMALL_DRIPLEAF_CAVES
+    - BIG_DRIPLEAF_CAVES
+    - GRASS_CAVES
+    - VALLEY_GIANT_GLOW_BERRIES
+    - SUNFLOWER_COVER
+    - CARROT_PATCHES

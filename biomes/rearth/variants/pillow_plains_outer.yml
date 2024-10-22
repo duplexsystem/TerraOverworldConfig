@@ -1,0 +1,78 @@
+id: PILLOW_PLAINS_OUTER
+type: BIOME
+vanilla: minecraft:plains
+color: $biomes/colors.yml:SAKURA_GROVE
+extends: [ CARVING_LAND, BASE ]
+
+tags:
+  - USE_RIVER
+
+colors:
+  grass: 0x70E66D
+  water: 0x5DB7EF
+  leaves: 0x70E66D
+
+vars: &variables
+  base: 70
+  height: 4
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      // positive / higher = solid
+      -y + base + surfaceVariation(x,z) * height
+    functions:
+      remapY:
+        arguments: [y, base, depth]
+        expression: (base - y) / depth
+      clamp:
+        arguments: [x, a, b] # clamps x between a (low) and b (high)
+        expression: min(max(x, a), b)
+      pillarWidth:
+        arguments: [x]
+        expression: 8.416667*x - 19.25*x^2 + 10.83333*x^3
+    samplers:
+      surfaceVariation:
+        dimensions: 2
+        type: OPEN_SIMPLEX_2S
+        frequency: 0.011
+      flatCells:
+        dimensions: 2
+        type: CELLULAR
+        frequency: 0.018
+        jitter: 1
+        distance: Euclidean
+      largeFlatAreas:
+        dimensions: 2
+        type: FBM
+        sampler:
+          type: OPEN_SIMPLEX_2S
+          frequency: 0.0055
+        octaves: 3
+        lacunarity: 1
+        gain: 0.5
+      pillarSizing:
+        dimensions: 2
+        type: CELLULAR
+        frequency: 0.018
+        jitter: 1
+        return: CellValue
+
+palette:
+  - GRASS_WHITE_PILLAR: 319
+  - << meta.yml:palette-bottom
+
+features:
+  flora:
+    - GRASS
+    - LOW_GRASS
+    - POPPY_PATCH
+    - OXEYE_DAISY_PATCH
+    - CORNFLOWER_PATCH
+    - ALLIUM_PATCH
+  landforms:
+    - BOULDERS
+    - SMALL_BOULDER_PATCHES

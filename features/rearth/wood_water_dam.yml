@@ -1,0 +1,30 @@
+id: WOOD_WATER_DAM
+type: FEATURE
+
+distributor:
+  type: "YES"
+
+locator:
+  type: AND
+  locators:
+    - type: PATTERN
+      range: &range
+        min: ${meta.yml:ocean-level}
+        max: ${meta.yml:ocean-level} + 1
+      pattern:
+        type: MATCH_AIR
+        offset: 0
+    - type: OR
+      locators:
+        - type: ADJACENT_PATTERN
+          range: *range
+          pattern:
+            type: MATCH
+            block: minecraft:water
+            offset: 0
+
+structures:
+  distribution:
+    type: CONSTANT
+  structures: dam_to_floor
+      

@@ -1,0 +1,3 @@
+str topBlock = "minecraft:water";
+
+block(0, -1, 0, topBlock);

@@ -1,0 +1,86 @@
+id: VINE_VAULT
+type: BIOME
+extends: [ ORES_DEFAULT ]
+vanilla: minecraft:lush_caves
+color: $biomes/colors.yml:DRIPSTONE_CAVES
+
+colors:
+  grass: 0x3abf13
+  foliage: 0x00aa17
+  water: 0x1e97f2
+  water-fog: 0x1e97f2
+
+vars: &variables
+  base: -30
+  middleHeight: -7
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      clamp(max((caves(x, y * 3.5, z) + 0.88) * 50 + wallOffset(x,y,z) * 3, -2)
+      + max((-platforms(x,z) -0.83 + abs(wallOffset(y, x / 20,  z / 24)) * 0.05) * 14, 0)
+      , -10, 10) * 16
+    functions:
+      clamp:
+        arguments: [x, a, b] # clamps x between a (low) and b (high)
+        expression: min(max(x, a), b)
+    samplers:
+      caves:
+        dimensions: 3
+        type: CELLULAR
+        frequency: 0.005
+        jitter: 0.05
+        salt: 24
+      platforms:
+        dimensions: 2
+        type: DOMAIN_WARP
+        amplitude: 3
+        warp:
+          type: OPEN_SIMPLEX_2
+          frequency: 0.02
+        sampler:
+          type: CELLULAR
+          frequency: 0.03
+      wallOffset:
+        dimensions: 3
+        type: FBM
+        sampler:
+          type: OPEN_SIMPLEX_2S
+          frequency: 0.025
+        octaves: 2
+        lacunarity: 2.8
+        gain: 0.5
+
+slant:
+  - threshold: 0.9
+    palette:
+      - MOSS_STONE: $meta.yml:top-y
+      - << meta.yml:palette-bottom
+  - threshold: 0.4
+    palette:
+      - MOSSY_COBBLESTONE_STONE: $meta.yml:top-y
+      - << meta.yml:palette-bottom
+
+palette:
+  - GRASS_DENSE_MOSSY: 319
+  - << meta.yml:palette-bedrock
+
+features:
+  global-preprocessors:
+    - CAVE_GLOW_LICHEN
+  flora:
+    - LARGE_LEAF_VINES_UNDERGROUND
+    - MOSS_CARPET
+    - VALLEY_PETALS
+    - CAVE_GLOW_BERRIES
+    - CAVE_SPORE_BLOSSOMS
+    - SMALL_DRIPLEAF_CAVES
+    - BIG_DRIPLEAF_CAVES
+    - GRASS_CAVES
+    - CROSSING_VINES_CAVES
+    - LARGE_CEILING_VINES_CAVES
+  trees:
+    - SINKHOLE_JUNGLE_TREES

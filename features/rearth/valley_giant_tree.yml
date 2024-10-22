@@ -1,0 +1,40 @@
+id: VALLEY_GIANT
+type: FEATURE
+
+distributor:
+  type: SAMPLER
+  sampler:
+    dimensions: 2
+    type: CELLULAR
+    frequency: 0.0065
+    jitter: 0.3
+  threshold: -0.999 # magic number to hit exactly one block in the middle of the cell
+
+locator:
+  type: AND
+  locators:
+    - type: SURFACE
+      range: &range
+        min: 1
+        max: 10
+    - type: PATTERN
+      range: *range
+      pattern:
+        type: MATCH_SET
+        blocks:
+          - minecraft:snow
+          - minecraft:air
+          - minecraft:short_grass
+        offset: 0
+    - type: PATTERN
+      range: *range
+      pattern:
+        type: MATCH_SET
+        blocks: $features/vegetation/meta.yml:plantable-blocks
+        offset: -1
+
+structures:
+  distribution:
+    type: WHITE_NOISE
+  structures:
+    - custom_sakura_tree: 1

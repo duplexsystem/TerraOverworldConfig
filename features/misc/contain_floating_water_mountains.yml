@@ -1,0 +1,28 @@
+id: CONTAIN_FLOATING_WATER_HIGH
+type: FEATURE
+
+distributor:
+  type: "YES"
+
+locator:
+  type: AND
+  locators:
+    - type: PATTERN
+      range: &range
+        min: ${meta.yml:ocean-level} + 2
+        max: ${meta.yml:ocean-level} + 50
+      pattern:
+        type: MATCH_AIR
+        offset: 0
+    - type: ADJACENT_PATTERN
+      range: *range
+      pattern:
+        type: MATCH
+        block: minecraft:water
+        offset: 0
+
+structures:
+  distribution:
+    type: CONSTANT
+  structures: BLOCK:minecraft:stone
+      

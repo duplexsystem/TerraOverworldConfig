@@ -1,0 +1,114 @@
+id: STONEGATE_SEAS
+type: BIOME
+extends: [ CARVING_OCEAN, BASE ]
+vanilla: minecraft:ocean
+color: $biomes/colors.yml:SANDSTONE_ARCHIPELAGO
+
+colors:
+  fog: 0xc0d8ff
+  water: 0x1787D4
+  water-fog: 0x1787D4
+  sky: 0x7ba4ff
+  grass: 0x8EB971
+  foliage: 0x71A74D
+
+  climate:
+    precipitation: rain
+    temperature: 0.5
+    downfall: 0.5
+
+vars: &variables
+  base: 55
+  height: 29
+  archHeight: 3
+  archRadius: 14
+  angle: 1.1
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      // positive / higher = solid
+        max(-y + base + surfaceBase(x,z) * 20, -3) +
+        max(arches(rotate(x, z, angle), y - 19, rotate(z, x, angle)) * 10, -3) +
+        max(arches(rotate(x, z, -angle / 2), y - 15, rotate(z, x, -angle / 2)) * 10, -3)
+    functions:
+      rotate:
+        arguments: [x, y, rad]
+        expression: x * cos(rad) - y * sin(rad)
+    samplers:
+      surfaceBase:
+        dimensions: 2
+        type: FBM
+        sampler:
+          type: OPEN_SIMPLEX_2S
+          frequency: 0.0095
+          salt: 3
+        octaves: 3
+        lacunarity: 2
+        gain: 0.5
+      arches:
+        dimensions: 3
+        type: EXPRESSION
+        variables: *variables
+        expression: |
+          // positive / higher = solid
+          (-abs((base + height * (pillarRand(0, z) * 0.3 + 1) * wave(x * 1.3 + pillarRand(0, z) * 25, archRadius)) - y) + archHeight) / archHeight // wave along x-axis
+          - (archMask(z, 0) + 0.98) * 190 * (pillarRand(0, z) * 0.4 + 1) // transform it along x-axis to transform the wave into arches
+          + widthRandom(x,y,z) * 0.8
+        functions:
+          wave:
+            arguments: [x, frequency]
+            expression: -sin(x / frequency)
+          smoothAbs:
+            arguments: [x]
+            expression: sqrt(x * x)
+        samplers:
+          widthRandom:
+            dimensions: 3
+            type: OPEN_SIMPLEX_2
+            frequency: 0.05
+          pillarRand:
+            dimensions: 2
+            type: CELLULAR
+            frequency: 0.012
+            jitter: 0.2
+            return: CellValue
+          archMask: # 1-dimensional
+            dimensions: 2
+            type: LINEAR
+            min: -1
+            max: 0.2
+            sampler:
+              type: CELLULAR
+              frequency: 0.012
+              jitter: 0.2
+
+palette:
+  - GREEN_STONE_MIX: 319
+  - SAND: 61
+  - << meta.yml:palette-bottom
+
+slant-depth: 4
+
+slant:
+  - threshold: 0.95
+    palette:
+      - GREEN_STONE_MIX: 319
+      - GRAVEL: 61
+      - << meta.yml:palette-bottom
+
+features:
+  underwater-flora:
+    - LARGE_CEILING_VINES
+    - LARGE_LEAF_VINES_RIVER_CAVE
+  flora:
+    - LARGE_LEAF_VINES
+    - SMALL_DRIPLEAF
+    - BIG_DRIPLEAF
+    - CORAL_PLANTS
+    - CORAL_FANS
+    - CROSSING_VINES
+    - LARGE_CEILING_VINES

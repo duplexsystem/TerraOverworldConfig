@@ -1,0 +1,36 @@
+id: SINKHOLE_JUNGLE
+type: BIOME
+vanilla: minecraft:jungle
+color: $biomes/colors.yml:OVERGROWN_CLIFFS
+extends: [ SINKHOLE_BASE ]
+
+colors:
+  grass: 0x3abf13
+  foliage: 0x00aa17
+  water: 0x1e97f2
+  water-fog: 0x1e97f2
+
+slant:
+  - threshold: 0.5
+    palette:
+      - BLOCK:minecraft:stone: 319
+      - BLOCK:minecraft:packed_mud: -35
+
+slant-depth: 40
+
+palette:
+  - GRASS: 319
+  - DEEPSLATE: -54
+  - BEDROCK: $meta.yml:bedrock-top
+  - BLOCK:minecraft:bedrock: $meta.yml:bottom-y
+
+features:
+  global-preprocessors:
+    - LAVA_FLOOR
+    - UNDERGROUND_LAVA_COLUMNS
+    - CONTAIN_FLOATING_WATER
+    - TEXTURED_STONE_SLANT
+  flora:
+    - GRASS_CAVES
+  trees:
+    - SINKHOLE_JUNGLE_TREES

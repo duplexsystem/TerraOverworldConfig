@@ -1,0 +1,79 @@
+id: VERDANT_VALLEYS
+type: BIOME
+extends: [ CARVING_LAND, BASE ]
+vanilla: minecraft:plains
+color: $biomes/colors.yml:PLAINS
+
+tags:
+  - USE_VERDANT_RIVER
+
+vars: &variables
+  base: 71
+  flatHeight: 6
+  mountainHeight: 35
+  pillarScale: 4000
+  pillarMaxHeight: 17
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      -y + base + flatHeight * surfaceOffset(x,z)
+      + max(mountains(x,z), 0) * mountainHeight
+      + if (mountains(x,z) > 0.35, clamp((-pillars(x,z) - 0.99) * pillarScale, 0, pillarMaxHeight + mountains(x * 2, z * 2) * 3), 0)
+    functions:
+      clamp:
+        arguments: [x, a, b] # clamps x between a (low) and b (high)
+        expression: min(max(x, a), b)
+    samplers:
+      mountains:
+        dimensions: 2
+        type: DOMAIN_WARP
+        amplitude: 5
+        warp:
+          type: OPEN_SIMPLEX_2
+          frequency: 0.04
+          salt: 6
+        sampler:
+          type: OPEN_SIMPLEX_2
+          frequency: 0.006
+      surfaceOffset:
+        dimensions: 2
+        type: FBM
+        sampler:
+          type: OPEN_SIMPLEX_2S
+          frequency: 0.006
+        octaves: 3
+        lacunarity: 2.4
+        gain: 0.5
+        salt: 2345
+      pillars:
+        dimensions: 2
+        type: CELLULAR
+        frequency: 0.01
+        jitter: 0.4
+
+palette:
+  - GRASS: 319
+  - SAND: 64
+  - MUDDY_BEACH: 61
+  - << meta.yml:palette-bottom
+
+slant:
+  - threshold: 0.6
+    palette:
+      - DARK_STONE_MIX: 319
+      - << meta.yml:palette-bottom
+
+features:
+  trees:
+    - SPARSE_ACACIA_TREES
+  flora:
+    - GRASS
+    - POPPY_PATCH
+    - MELON_PATCHES
+    - OXEYE_DAISY_PATCH
+    - CORNFLOWER_PATCH
+    - ALLIUM_PATCH

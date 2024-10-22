@@ -1,0 +1,34 @@
+id: FARMLAND_WATER_SPOTS
+type: FEATURE
+
+distributor:
+  type: PADDED_GRID
+  width: 3
+  padding: 1
+  salt: 2453
+
+locator:
+  type: AND
+  locators:
+    - type: SURFACE
+      range: &range
+        min: 70
+        max: 77
+    - type: PATTERN
+      range: *range
+      pattern:
+        type: MATCH
+        block: minecraft:farmland
+        offset: -1
+    - type: PATTERN
+      range: *range
+      pattern:
+        type: MATCH
+        block: minecraft:air
+        offset: 0
+
+structures:
+  distribution:
+    type: CONSTANT
+  structures: farm_water
+      

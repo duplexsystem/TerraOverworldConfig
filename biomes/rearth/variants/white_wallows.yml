@@ -1,0 +1,37 @@
+id: WHITE_WALLOWS
+type: BIOME
+vanilla: minecraft:windswept_hills
+extends: [ EQ_ERODED_VALLEY_MOUNTAINS, CARVING_LAND, BASE ]
+
+color: $biomes/colors.yml:PLAINS
+
+tags:
+  - USE_RIVER
+
+palette:
+  - GRASS_MUSHY: 319
+  - GRASS_PODZOL_MUDDY: 75
+  - MUDDY_BEACH: 63
+  - << meta.yml:palette-bottom
+
+slant:
+  - threshold: 0.7
+    palette:
+      - ROCKY_SLANT: 319
+      # - CALCITE_DIORITE_MIX: 319
+      - << meta.yml:palette-bottom
+
+features:
+  landforms:
+    - MOSSY_BOULDERS
+  flora:
+    - GRASS
+    - LARGE_CEILING_VINES
+    - AZALEA_BLOCK
+    - FLOWERING_AZALEA_BLOCK
+    - MIXED_BUSHES
+    - FERNS
+    - WHITE_FLOWER_COVER
+  trees:
+    - GREAT_AZALEA_TREES
+    - MESQUITE_TREES

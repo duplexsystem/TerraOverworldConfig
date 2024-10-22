@@ -1,0 +1,51 @@
+id: SECLUDED_VALLEY_OUTER
+type: BIOME
+vanilla: minecraft:meadow
+color: $biomes/colors.yml:SUNFLOWER_PRAIRIE
+extends: [ CARVING_LAND, BASE ]
+
+colors:
+  grass: 0x72b95d
+  foliage: 0x5dae53
+  water: 0x44aff5
+  water-fog: 0x44aff5
+
+vars: &variables
+  base: 80
+  height: 3
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      // positive / higher = solid
+      -y + base + surfaceVariation(x,z) * height
+    samplers:
+      surfaceVariation:
+        dimensions: 2
+        type: OPEN_SIMPLEX_2
+        frequency: 0.007
+
+slant:
+  - threshold: 0.4
+    palette:
+      - MOSS_TUFF: 319
+      - MOSSY_COBBLESTONE_STONE: 71
+      - BLOCK:minecraft:moss_block: 55
+
+slant-depth: 4
+
+palette:
+  - GRASS: 319
+  - SAND: 64
+  - MUDDY_BEACH: 61
+  - MOSS_TUFF: 50
+  - << meta.yml:palette-bottom
+
+features:
+  flora:
+    - GRASS
+    - SUNFLOWER_COVER
+    - CARROT_PATCHES

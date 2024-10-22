@@ -1,0 +1,42 @@
+id: EQ_ERODED_VALLEY_MOUNTAINS
+type: BIOME
+abstract: true
+
+vars: &variables
+  base: 73
+  height: 25
+  valleyDepth: 50
+  valleyCutoff: 0.15
+  valleyCutoffStart: -0.97
+  caveStrength: 35
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      -y + base
+      + valleyDepth * (clamp(valleys(x,z), valleyCutoffStart, valleyCutoffStart + valleyCutoff) - valleyCutoffStart) * (1 / valleyCutoff)
+      + lerp(valleys(x,z), valleyCutoffStart, 0.2, valleyCutoffStart + valleyCutoff, 1) * height * surfaceOffset(x,z)
+      - abs(caves(x,y * 1.85,z) * caveStrength) * lerp(y, 65, 0, 70, 1)
+    samplers:
+      surfaceOffset:
+        dimensions: 2
+        type: FBM
+        sampler:
+          type: OPEN_SIMPLEX_2S
+          frequency: ${customization.yml:biomeSpread.mountainFrequency}
+        octaves: 3
+        lacunarity: 4
+        gain: 0.3
+      caves:
+        dimensions: 3
+        type: OPEN_SIMPLEX_2S
+        frequency: 0.018
+      valleys:
+        dimensions: 2
+        type: CELLULAR
+        frequency: 0.005
+        distance: Euclidean
+        return: Distance2Sub

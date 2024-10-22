@@ -1,0 +1,26 @@
+id: BLACK_FOREST
+type: BIOME
+extends: [ EQ_MOUNTAIN_SPOTS, CARVING_LAND, BASE ]
+vanilla: minecraft:dark_forest
+color: $biomes/colors.yml:DARK_FOREST
+
+tags:
+  - USE_RIVER
+
+palette:
+  - BLACK_FOREST_GROUND: $meta.yml:top-y
+  - SAND: 63
+  - << meta.yml:palette-bottom
+
+features:
+  preprocessors:
+    - CONTAIN_FLOATING_WATER_HIGH
+  flora:
+    - GRASS
+  trees:
+    - BLACK_FOREST_TREES
+    # - SPARSE_LARGE_MUSHROOMS
+    # - DENSE_DARK_FOREST_TREES
+  landforms:
+    - MOSSY_BOULDERS
+    - SMALL_MOSSY_BOULDER_PATCHES

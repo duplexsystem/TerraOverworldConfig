@@ -1,0 +1,59 @@
+id: CANOPY_CASCADES
+type: BIOME
+vanilla: minecraft:jungle
+color: $biomes/colors.yml:OVERGROWN_CLIFFS
+extends: [ EQ_TERRACE_MOUNTAINS, CARVING_LAND, BASE ]
+
+colors:
+  grass: 0x3abf13
+  foliage: 0x00aa17
+  water: 0x1e97f2
+  water-fog: 0x1e97f2
+
+tags:
+  - USE_JUNGLE_VISTA_RIVER
+
+palette:
+  - GRASS: $meta.yml:top-y
+  - SAND: ${meta.yml:ocean-level} + 2
+  - << meta.yml:palette-bottom
+
+slant:
+  - threshold: 0.7
+    palette:
+      - MOSS_STONE: $meta.yml:top-y
+      - << meta.yml:palette-bottom
+  - threshold: 0.5
+    palette:
+      - MOSSY_COBBLESTONE_STONE: $meta.yml:top-y
+      - << meta.yml:palette-bottom
+  - threshold: 0.4
+    palette:
+      - TUFF_STONE: $meta.yml:top-y
+      - << meta.yml:palette-bottom
+  - threshold: 0.3
+    palette:
+      - BLOCK:minecraft:stone: $meta.yml:top-y
+      - << meta.yml:palette-bottom
+
+features:
+  flora:
+    - GRASS
+    - FERNS
+    - LARGE_LEAF_VINES
+    - POPPY_PATCH
+    - DANDELION_PATCH
+    - ROSE_BUSH_PATCH
+    - PEONY_PATCH
+    - LILAC_PATCH
+    - LILY_OF_THE_VALLEY_PATCH
+    - TALL_GRASS
+    - MELON_PATCHES
+    - SMALL_DRIPLEAF
+    - BIG_DRIPLEAF
+    - CORAL_PLANTS
+    - CORAL_FANS
+  trees:
+    - JUNGLE_TREES
+    - DENDRIFORM_REEF
+    - BALL_REEF

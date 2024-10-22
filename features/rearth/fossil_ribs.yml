@@ -1,0 +1,63 @@
+id: FOSSIL_RIBS
+type: FEATURE
+
+
+vars: &variables
+  spacing: 10
+  stretchFactor: 7
+
+distributor:
+  type: SAMPLER
+  threshold: 1  # matches everthing UNDER this
+  sampler:
+    type: PROBABILITY
+    sampler:
+      type: EXPRESSION
+      variables: *variables
+      expression: |
+        if ((abs(z) % spacing = 0), 
+          spine(x + sin(z / 20) * 10,z), 
+          2)
+      samplers:
+        spine:
+          dimensions: 2
+          type: EXPRESSION
+          variables: *variables
+          expression: |
+            if (-lengthMask(0, z) > 0.918,
+              (abs(baseMask(x / stretchFactor, 0))) * 400,
+              2)
+          samplers:
+            baseMask:
+              dimensions: 2
+              type: OPEN_SIMPLEX_2
+              frequency: 0.02
+            lengthMask: &mask
+              dimensions: 2
+              type: CELLULAR
+              jitter: 0.4
+              frequency: 0.003
+              return: Distance
+
+locator:
+  type: SURFACE
+  range:
+    min: 64
+    max: 300
+
+structures:
+  distribution:
+    type: EXPRESSION
+    expression: |
+      if (-lengthMask(0, z) > 0.965, 
+        1, 
+        if (-lengthMask(0, z) > 0.945,  0.3, 
+          if (-lengthMask(0, z) < 0.929 && lengthMask(0, z + 10) < lengthMask(0, z), -1, -0.5))) // for the head at the end
+    samplers:
+      lengthMask: *mask
+  structures: 
+    # - fossil_segment: 1
+    - fossil_head: 1
+    - fossil_segment_low: 1
+    - fossil_segment_mid: 1
+    - fossil_segment_high: 1

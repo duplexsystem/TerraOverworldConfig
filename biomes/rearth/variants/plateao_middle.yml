@@ -1,0 +1,83 @@
+id: FOLIAGE_FORTRESS_MIDDLE
+type: BIOME
+vanilla: minecraft:savanna
+extends: [ CARVING_LAND, BASE ]
+
+color: $biomes/colors.yml:SAVANNA
+
+colors:
+  grass: 0x82BC6D
+  foliage: 0x65A949
+  water: 0xE4ECF
+  water-fog: 0xC0D8FF
+  
+tags:
+  - USE_PLATEAU_MID_RIVER
+
+vars: &variables
+  base: 69
+  top: 109
+  topWidth: 6
+  biomeVariationStrength: 15
+  surfaceVariationStrength: 8
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      max(
+        -y + base + surfaceOffset(x,z) * surfaceVariationStrength,
+        -abs(top + cellBase(x,z) * biomeVariationStrength + surfaceOffset(x,z) * surfaceVariationStrength - y - topWidth) + topWidth
+      ) + wallVariation(x,y,z) * clamp((-abs(base + (top - base) / 2 - y) + 10), 0, 1) * 10
+    samplers:
+      cellBase:
+        dimensions: 2
+        type: CELLULAR
+        frequency: 1 / ${customization.yml:biomeSpread.cellDistance}
+        jitter: ${customization.yml:biomeSpread.cellJitter}
+        return: CellValue
+      surfaceOffset:
+        dimensions: 2
+        type: FBM
+        sampler:
+          type: OPEN_SIMPLEX_2S
+          frequency: 0.006
+        octaves: 2
+        lacunarity: 3.4
+        gain: 0.4
+      wallVariation:
+        dimensions: 3
+        type: OPEN_SIMPLEX_2S
+        frequency: 0.035
+
+palette:
+  - GRASS_VARIATION: 319
+  - GRASS_MUSHY: 78
+  - MUDDY_BEACH: 63
+  - << meta.yml:palette-bottom
+
+slant:
+  - threshold: 0.3
+    palette:
+      - BLOCK:minecraft:stone: 319
+      - << meta.yml:palette-bottom
+
+features:
+  preprocessors:
+    - PLATEAO_PILLARS
+  flora:
+    - GRASS
+    - TALL_GRASS
+    - CROSSING_VINES
+    - LARGE_LEAF_VINES
+    - LARGE_CEILING_VINES
+    - POPPY_PATCH
+    - DANDELION_PATCH
+    - ROSE_BUSH_PATCH
+    - PEONY_PATCH
+    - LILAC_PATCH
+    - LILY_OF_THE_VALLEY_PATCH
+  trees:
+    - SPARSE_ACACIA_TREES

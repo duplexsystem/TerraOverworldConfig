@@ -1,0 +1,23 @@
+id: MESA_MONUMENTS
+type: BIOME
+vanilla: minecraft:badlands
+color: $biomes/colors.yml:CRACKED_BADLANDS_PLATEAU
+extends: [ EQ_PILLARS, COLOR_XERIC, CARVING_LAND, BASE ]
+
+tags:
+  - USE_RIVER
+
+palette:
+  - BADLANDS_PILLARS_TERRACOTTA: 319
+  - << meta.yml:palette-bottom
+
+features:
+  flora:
+    - CACTUS_SPARSE
+    - DEAD_BUSHES
+  trees:
+    - OAK_BUSH_PATCHES
+    - DEAD_TREES_SPARSE
+  landforms:
+    - GRANITE_BOULDERS
+    - SMALL_GRANITE_BOULDER_PATCHES

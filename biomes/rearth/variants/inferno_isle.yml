@@ -1,0 +1,63 @@
+id: INFERNO_ISLES
+type: BIOME
+extends: [ ORES_DEFAULT ]
+vanilla: minecraft:dripstone_caves
+color: $biomes/colors.yml:DRIPSTONE_CAVES
+
+vars: &variables
+  middleHeight: -7
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      clamp(max((caves(x, y * 2, z) + 0.88) * 50 + wallOffset(x,y,z) * 3, -2)
+      + max((4.9 - abs(middleHeight - y)), 0) * (-platforms(x,z) - 0.29), -10, 10) * 16
+      // + if (y < middleHeight - 2, max((-platforms(x,z) -0.83) * 14, 0), 0) // platform support pillars
+    functions:
+      clamp:
+        arguments: [x, a, b] # clamps x between a (low) and b (high)
+        expression: min(max(x, a), b)
+    samplers:
+      caves:
+        dimensions: 3
+        type: CELLULAR
+        frequency: 0.005
+        jitter: 0.05
+        salt: 24
+      platforms:
+        dimensions: 2
+        type: DOMAIN_WARP
+        amplitude: 3
+        warp:
+          type: OPEN_SIMPLEX_2
+          frequency: 0.02
+        sampler:
+          type: CELLULAR
+          frequency: 0.05
+      wallOffset:
+        dimensions: 3
+        type: FBM
+        sampler:
+          type: OPEN_SIMPLEX_2S
+          frequency: 0.025
+        octaves: 2
+        lacunarity: 2.8
+        gain: 0.5
+
+palette:
+  - BLACKSTONE_BASALT_MIX: 319
+  - << meta.yml:palette-bedrock
+
+features:
+  global-preprocessors:
+    - LAVA_CAVE_FLOOR
+    - CAVE_LAVA_COLUMNS
+    - CAVE_GLOW_LICHEN
+  landforms:
+    - CAVE_CHAINS
+    # - CAVE_SPIKES
+  flora:
+    - CAVE_GLOW_BERRIES

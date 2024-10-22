@@ -77,9 +77,10 @@ stages:
   - type: REPLACE
     from: USE_RIVER_TEMPERATE_MARSH
     to:
-      - SELF: 1
+      - SELF: 2
       - MARSH: 1
-      - RIVER: 2
+      - MURKY_MARSHLANDS: 1
+      - RIVER: 3
     sampler: *riverSampler
   # Regular rivers with bordering swamps
   - type: REPLACE
@@ -132,4 +133,82 @@ stages:
       - SELF: 1
       - FROZEN_MARSH: 1
       - FROZEN_RIVER: 2
+    sampler: *riverSampler
+  - type: REPLACE
+    from: USE_VISTA_RIVER
+    to:
+      SELF: 1
+      VISTAS_RIVER : 1
+    sampler: *riverSampler
+  - type: REPLACE
+    from: USE_FROZEN_VISTA_RIVER
+    to:
+      SELF: 1
+      MOUNTAIN_MIRRORS_RIVER : 1
+    sampler: *riverSampler
+  - type: REPLACE
+    from: USE_LOOPS_RIVER
+    to:
+      SELF: 1
+      LOOPS_RIVER : 1
+    sampler: *riverSampler
+  - type: REPLACE
+    from: USE_VERDANT_RIVER
+    to:
+      SELF: 1
+      VERDANT_RIVER : 1
+    sampler: *riverSampler
+  - type: REPLACE
+    from: USE_FROZEN_RIVER
+    to:
+      SELF: 1
+      FROZEN_RIVER: 1
+    sampler: *riverSampler
+  - type: REPLACE
+    from: USE_JUNGLE_VISTA_RIVER
+    to:
+      SELF: 1
+      VERTICAL_JUNGLE_RIVER: 1
+    sampler: *riverSampler
+  - type: REPLACE
+    from: USE_BAD_BALCOONIES_RIVER
+    to:
+      SELF: 1
+      BAD_BALCOONIES_RIVER: 1
+    sampler: *riverSampler
+  - type: REPLACE
+    from: USE_HIGHMOUNTAINS_RIVER
+    to:
+      SELF: 1
+      ALPINE_ASCENDANCY_RIVER: 1
+    sampler: *riverSampler
+  - type: REPLACE
+    from: USE_PLATEAU_MID_RIVER
+    to:
+      SELF: 1
+      PLATEAO_RIVER_MIDDLE: 1
+    sampler: *riverSampler
+  - type: REPLACE
+    from: USE_PLATEAU_INNER_RIVER
+    to:
+      SELF: 1
+      PLATEAO_RIVER_INNER: 1
+    sampler: *riverSampler
+  - type: REPLACE
+    from: USE_SCARLET_RIVER
+    to:
+      SELF: 1
+      SCARLET_SANCTUARY_RIVER: 1
+    sampler: *riverSampler
+  - type: REPLACE
+    from: USE_COLD_FUNGI_RIVER
+    to:
+      SELF: 1
+      FROZEN_FUNGI_RIVER: 1
+    sampler: *riverSampler
+  - type: REPLACE
+    from: USE_GLOOMY_GORGE_RIVER
+    to:
+      SELF: 1
+      GLOOMY_GORGE_RIVER: 1
     sampler: *riverSampler

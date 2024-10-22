@@ -1,0 +1,16 @@
+id: SINKHOLE_SNOW_LAYERS
+type: FEATURE
+
+distributor:
+  type: "YES"
+
+locator:
+  type: SURFACE
+  range:
+    min: -50
+    max: -35
+
+structures:
+  structures: snow_layers
+  distribution:
+    type: CONSTANT

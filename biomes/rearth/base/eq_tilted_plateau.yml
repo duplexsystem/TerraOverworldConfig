@@ -1,0 +1,64 @@
+id: EQ_TILTED_PLATEAU
+type: BIOME
+abstract: true
+
+vars: &variables
+  base: 71
+  height: 10
+  cellDist: ${customization.yml:biomeSpread.cellDistance}
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      cliffify(-y + base + height * surfaceOffset(x,z)
+        + (biomeTilt(x - 3, z - 3) + 0.5) * 55, -1)
+      + (wallAddition(x,y,z) + 1) * 2
+    functions:
+      cliffify:
+        arguments: [x, border]
+        expression: |
+          if (x > border, 
+            if (x > 6, max(0.06428571 + 1.2975*(x / 3 + 5) - 0.1223214*(x / 3 + 5)^2, 0.1), max(0.06428571 + 1.2975*x - 0.1223214*x^2, 0.1)), 
+          x)
+    samplers:
+      wallAddition:
+        dimensions: 3
+        type: OPEN_SIMPLEX_2S
+        frequency: 0.09
+      biomeTilt:
+        dimensions: 2
+        type: DOMAIN_WARP
+        warp:
+          type: OPEN_SIMPLEX_2
+          frequency: 0.05
+        amplitude: 7
+        sampler:
+          dimensions: 2
+          type: CELLULAR
+          return: LocalNoiseLookup
+          jitter: ${customization.yml:biomeSpread.cellJitter}
+          frequency: 1 / ${customization.yml:biomeSpread.cellDistance}
+          lookup:
+            dimensions: 2
+            type: EXPRESSION
+            variables: *variables
+            expression: |
+              x / cellDist + z / cellDist * 0.7
+      biomeDist:
+        dimensions: 2
+        type: CELLULAR
+        return: Distance
+        jitter: ${customization.yml:biomeSpread.cellJitter}
+        frequency: 1 / ${customization.yml:biomeSpread.cellDistance}
+      surfaceOffset:
+        dimensions: 2
+        type: FBM
+        sampler:
+          type: OPEN_SIMPLEX_2S
+          frequency: 0.006
+        octaves: 3
+        lacunarity: 2
+        gain: 0.5

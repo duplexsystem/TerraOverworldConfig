@@ -1,0 +1,46 @@
+id: FARMLAND_CROPS
+type: FEATURE
+
+distributor:
+  type: "YES"
+
+locator:
+  type: AND
+  locators:
+    - type: SURFACE
+      range: &range
+        min: 70
+        max: 77
+    - type: PATTERN
+      range: *range
+      pattern:
+        type: MATCH
+        block: minecraft:farmland
+        offset: -1
+    - type: PATTERN
+      range: *range
+      pattern:
+        type: MATCH
+        block: minecraft:air
+        offset: 0
+
+structures:
+  distribution:
+    type: DOMAIN_WARP
+    amplitude: 3
+    warp:
+      type: GAUSSIAN
+    sampler:
+      type: FBM
+      octaves: 2
+      sampler:
+        type: OPEN_SIMPLEX_2
+        frequency: 0.02
+  structures: 
+    - BLOCK:minecraft:potatoes[age=6]: 1
+    - BLOCK:minecraft:wheat[age=1]: 1
+    - BLOCK:minecraft:carrots[age=4]: 1
+    - BLOCK:minecraft:wheat[age=7]: 1
+    - BLOCK:minecraft:carrots[age=2]: 1
+    - BLOCK:minecraft:potatoes[age=3]: 1
+      

@@ -1,0 +1,39 @@
+id: ICE_SPIKES_SINKHOLE
+type: FEATURE
+
+distributor:
+  type: PADDED_GRID
+  width: 6
+  padding: 2
+  salt: 7234
+
+locator:
+  type: AND
+  locators:
+    - type: TOP
+      range: &range
+        min: -60
+        max: -35
+    - type: PATTERN
+      range: *range
+      pattern:
+        type: MATCH_SET
+        blocks:
+          - minecraft:air
+          - minecraft:snow
+        offset: 0
+    - type: PATTERN
+      range: *range
+      pattern:
+        type: MATCH_SET
+        blocks:
+          - minecraft:snow_block
+        offset: -1
+
+
+structures:
+  distribution:
+    type: CONSTANT
+  structures:
+    - ice_spike: 1
+  

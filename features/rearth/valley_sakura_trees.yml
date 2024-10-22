@@ -1,0 +1,36 @@
+id: VALLEY_SAKURA_TREES
+type: FEATURE
+
+distributor:
+  type: PADDED_GRID
+  width: 6
+  padding: 3
+  salt: 5972
+
+locator:
+  type: AND
+  locators:
+    - type: TOP
+      range: &range
+        min: 9
+        max: 27
+    - type: PATTERN
+      range: *range
+      pattern:
+        type: MATCH_SET
+        blocks: $features/vegetation/meta.yml:plantable-blocks
+        offset: -1
+    - type: PATTERN
+      range: *range
+      pattern:
+        type: MATCH_SET
+        blocks:
+          - minecraft:snow
+          - minecraft:air
+        offset: 0
+
+structures:
+  distribution:
+    type: CONSTANT
+  structures:
+    - cherry_blossom_tree_procedural: 1

@@ -1,0 +1,35 @@
+stages:
+  - type: REPLACE
+    sampler:
+      type: EXPRESSION
+      dimensions: 2
+      variables:
+        canyonStrength: ${customization.yml:biomeSpread.canyons.canyonAmount}
+      expression: |
+        min(max(-mask(x,z * 1.3) - canyonStrength, 0) * 18, 1) *
+        max((-abs(base(x,z)) + 0.3) * 2, 0) * (1 / 0.2)
+      samplers:
+        base:
+          dimensions: 2
+          type: OPEN_SIMPLEX_2S
+          frequency: 1 / ${customization.yml:biomeSpread.cellDistance} * 1
+        mask:
+          dimensions: 2
+          type: CELLULAR
+          frequency: 1 / ${customization.yml:biomeSpread.cellDistance} * 0.15
+          seed: 23456345
+    from: land
+    range:
+      min: ${customization.yml:biomeSpread.canyons.minY}
+      max: 319
+    to:
+      SELF: 16
+      _canyon: 7
+  - type: REPLACE
+    from: _canyon
+    sampler:
+      type: EXPRESSION 
+      expression: temperature(x, z)
+    to:
+      ICY_INCISIONS: 3
+      SANDY_SPLITS: 4

@@ -1,0 +1,37 @@
+id: OASIS_PALM_TREES
+type: FEATURE
+
+distributor:
+  type: AND
+  distributors:
+    - type: PADDED_GRID
+      width: 8
+      padding: 3
+      salt: 2355
+
+locator:
+  type: AND
+  locators:
+    - type: TOP
+      range: &range
+        min: ${meta.yml:ocean-level} + 1
+        max: ${meta.yml:ocean-level} + 5
+    - type: PATTERN
+      range: *range
+      pattern:
+        type: MATCH_SOLID
+        # blocks: $features/vegetation/meta.yml:sugarcane-plantable-blocks
+        offset: -1
+    - type: PATTERN
+      range: *range
+      pattern:
+        type: MATCH_SET
+        blocks:
+          - minecraft:snow
+          - minecraft:air
+        offset: 0
+
+structures:
+  distribution:
+    type: WHITE_NOISE
+  structures: palm_tree_procedural

@@ -1,0 +1,29 @@
+id: OCEAN_DARK_FLOOR_DEEP
+type: PALETTE
+
+layers:
+  - materials:
+      - minecraft:magma_block: 1
+      - minecraft:obsidian: 2
+      - minecraft:mossy_cobblestone: 6
+      - minecraft:andesite: 3
+      - minecraft:basalt: 3
+      - minecraft:gravel: 6
+      - minecraft:dripstone_block: 3
+    layers: 5
+  - materials:
+      - minecraft:dripstone_block: 1
+      - minecraft:deepslate: 2
+    layers: 1
+
+sampler:
+  dimensions: 2
+  type: DOMAIN_WARP
+  amplitude: 4
+  warp:
+    type: OPEN_SIMPLEX_2
+    frequency: 0.1
+  sampler:
+    type: CELLULAR
+    frequency: 0.08
+    distance: Euclidean

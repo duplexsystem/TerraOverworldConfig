@@ -338,3 +338,35 @@ spot-radius-min: 50
 
 spot-radius-max: 150
 # Default: 150
+
+biomeSpread:
+  # Basic size of biomes (distance between 2 biome centers)
+  # Increase to make biomes bigger
+  cellDistance: 350
+
+  # how far biome centers can vary away from their centers
+  # Increase to make biome sizes vary more (scale 0-1)
+
+  cellJitter: 0.9
+
+  # Frequency of rivers. Increase to make rivers closer together and smaller, decrease for bigger, more spaced out rivers
+  riverScale: 0.0013
+
+  # applies to biomes with borders, controls the ratio of inner/outer biomes
+  borderBiomes:
+    edgeThreshold: 0.8
+
+  # sink holes have a chance to generate in the world. They go down to -50 and generate a smaller biome there. Placed anywhere over other biomes
+  sinkHoles:
+    stretchFactor: 2.5  # Length-width ratio of the sinkholes. Increase for more stretched/longer sinkholes
+    angle: 0.435        # Angle in which they are spawned. In radians (0.425 = 25 Degrees)
+    size: 0.83          # Sizing of the invidial sinkholes. Inversed, increase to make them smaller. Scale 0-1
+    borderSize: 0.02   # Size of the border biome around the sinkhole
+    frequency: 0.0025   # frequency of sinkhole placement. Increase for more smaller sinkholes, decrease for fewer, but larger ones
+
+  mountainFrequency: 0.004  # shared frequence of some larger mountain biomes, allows them to blend easier
+
+  canyons:
+    minY: 25 # how deep down the canyons will go. This is an absolute Y height. Increase to make the canyons shallower
+    canyonAmount: 0.93 # How rare the canyons should be. Range 0-1, with 1 disabling all canyons
+

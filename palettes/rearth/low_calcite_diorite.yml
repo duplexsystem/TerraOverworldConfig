@@ -1,0 +1,21 @@
+id: DEEP_CALCITE_DIORITE
+type: PALETTE
+
+layers:
+  - materials:
+      - minecraft:mossy_cobblestone: 1
+      - minecraft:stone: 1
+    layers: 3
+    sampler:
+      type: OPEN_SIMPLEX_2
+      frequency: 0.13
+      salt: 29308
+  - materials:
+      - minecraft:calcite: 3
+      - minecraft:deepslate: 1
+      - minecraft:diorite: 2
+    layers: 1
+    sampler:
+      type: OPEN_SIMPLEX_2
+      frequency: 0.08
+      salt: 29308

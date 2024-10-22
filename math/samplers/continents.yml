@@ -68,3 +68,62 @@ samplers:
           variables: *continentBorderVariables
           samplers:
             continents: *continents
+
+  continentBorderCelledSmall:
+    dimensions: 2
+    type: EXPRESSION
+    expression: |
+      if(inRange(continentCells(x, z), -threshold, threshold),
+        if(continentsEdge((x-width)/width, (z-width)/width) != 0, 1, -1),
+        -1
+      )
+    variables: &continentBorderVariables
+      width: ${customization.yml:continental-coast-width} * ${customization.yml:global-scale}
+      threshold: $customization.yml:continental-coast-width
+    functions:
+      inRange:
+        arguments:
+          - x
+          - lower
+          - upper
+        expression: x >= lower && x <= upper
+    samplers: &oceanEdgeSampler
+      continentCells: &continentCell
+        dimensions: 2
+        type: CELLULAR
+        jitter: ${customization.yml:biomeSpread.cellJitter}
+        return: NoiseLookup
+        frequency: 1 / ${customization.yml:biomeSpread.cellDistance}
+        lookup: *continents
+      continentsEdge:
+        dimensions: 2
+        type: KERNEL
+        kernel: [[0,  1, 0],
+                 [1, -4, 1],
+                 [0,  1, 0]]
+        sampler:
+          type: EXPRESSION
+          expression: continents(x*width, z*width) > 0
+          variables: *continentBorderVariables
+          samplers:
+            continents: *continentCell
+
+  continentBorderCelledBig:
+    dimensions: 2
+    type: EXPRESSION
+    expression: |
+      if(inRange(continentCells(x, z), -threshold, threshold),
+        if(continentsEdge((x-width)/width, (z-width)/width) != 0, 1, -1),
+        -1
+      )
+    variables: &continentBorderVariables
+      width: ${customization.yml:continental-coast-width} * ${customization.yml:global-scale} * 2
+      threshold: ${customization.yml:continental-coast-width} * 2
+    functions:
+      inRange:
+        arguments:
+          - x
+          - lower
+          - upper
+        expression: x >= lower && x <= upper
+    samplers: *oceanEdgeSampler

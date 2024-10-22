@@ -1,0 +1,86 @@
+id: BAMBOO_BASIN
+type: BIOME
+vanilla: minecraft:bamboo_jungle
+color: $biomes/colors.yml:EUCALYPTUS_FOREST
+extends: [ CARVING_LAND, BASE ]
+
+vars: &variables
+  base: 67
+  height: 55
+
+riverSampler: &riverSampler $biomes/rearth/variants/sakura_streams.yml:terrain.sampler.samplers.riverMask
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      // positive / higher = solid
+      -y + base
+      + min(-cells(x,z), 0.8) * height
+      + riverMask(x, y, z) * 40
+    functions:
+      terrace:
+        arguments: [x, terraceStrength]
+        expression: round(x) + 0.5 * (2*(x - round(x)))^terraceStrength
+    samplers:
+      cells:
+        dimensions: 2
+        type: CELLULAR
+        frequency: 0.045
+        jitter: 0.9
+        return: NoiseLookup
+        lookup:
+          dimensions: 2
+          type: LINEAR
+          min: -1
+          max: 0.2
+          sampler: &mountainCells
+            dimensions: 2
+            type: CELLULAR
+            frequency: 1 / ${customization.yml:biomeSpread.cellDistance}
+            jitter: ${customization.yml:biomeSpread.cellJitter}
+            # frequency: 0.005
+            # jitter: 0
+            distance: Euclidean
+      riverMask:
+        dimensions: 3
+        type: EXPRESSION
+        variables: *variables
+        expression: |
+          clamp(abs(abs(riverBaseAngle(x,z) * 3) +    // basic line from center
+            riverAngleVariation(cellMountains(x,z) * 300, 0) * 0.24   // vary angle slightly going outwards
+            - rivers(x,z)) % (6.28 / 5) * lerp(cellMountains(x,z), -0.98, -0.15, -0.2, 3.5) // ensure river has proper width, add lake on top
+            - 0.25, -0.21, 0)   // set river width, clamp at max depth
+        samplers:
+          cellMountains: *mountainCells
+          rivers:
+            <<: *mountainCells
+            return: Angle
+          riverAngleVariation:
+            dimensions: 2
+            type: OPEN_SIMPLEX_2S
+            frequency: 0.014
+          riverBaseAngle: # angle on the whole mountain
+            <<: *mountainCells
+            return: CellValue
+
+palette:
+  - EUCALYPTUS_MOUNTAIN_RIVER: 319
+  - << meta.yml:palette-bottom
+
+features:
+  underwater-flora:
+    - MANGROVE_SEAGRASS
+  flora:
+    - GRASS
+  trees:
+    - MANGROVE_TREES
+    - DEAD_SWAMP_TREES
+    - EUCALYPTUS_TREES
+    - JUNGLE_BUSHES
+    - POTATO_PATCHES
+    - BAMBOO_PATCHES
+  landforms:
+    - SMALL_MOSSY_BOULDER_PATCHES

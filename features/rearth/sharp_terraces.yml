@@ -1,0 +1,69 @@
+id: SHARP_TERRACES
+type: FEATURE
+
+distributor:
+  type: "YES"
+
+locator:
+  type: OR
+  locators:
+    - type: AND
+      locators:
+        - type: TOP
+          range: &range
+            min: 71
+            max: 72
+        - type: PATTERN
+          range: *range
+          pattern:
+            type: MATCH
+            block: minecraft:farmland
+            offset: -1
+        - type: PATTERN
+          range: *range
+          pattern:
+            type: MATCH
+            block: minecraft:air
+            offset: 0
+    - type: AND
+      locators:
+        - type: TOP
+          range: &range
+            min: 73
+            max: 74
+        - type: PATTERN
+          range: *range
+          pattern:
+            type: MATCH
+            block: minecraft:farmland
+            offset: -1
+        - type: PATTERN
+          range: *range
+          pattern:
+            type: MATCH
+            block: minecraft:air
+            offset: 0
+    - type: AND
+      locators:
+        - type: TOP
+          range: &range
+            min: 75
+            max: 76
+        - type: PATTERN
+          range: *range
+          pattern:
+            type: MATCH
+            block: minecraft:farmland
+            offset: -1
+        - type: PATTERN
+          range: *range
+          pattern:
+            type: MATCH
+            block: minecraft:air
+            offset: 0
+
+structures:
+  distribution:
+    type: CONSTANT
+  structures: BLOCK:minecraft:farmland[moisture=7]
+      

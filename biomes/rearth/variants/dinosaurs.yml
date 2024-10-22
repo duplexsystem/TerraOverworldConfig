@@ -1,0 +1,69 @@
+id: FOSSILIZED_FENLANDS
+type: BIOME
+vanilla: minecraft:plains
+extends: [ CARVING_LAND, BASE ]
+
+color: $biomes/colors.yml:PLAINS
+
+tags:
+  - USE_RIVER
+
+vars: &variables
+  base: 71
+  height: 11
+  stepHeight: 4
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      -y + base + height * surfaceOffset(x,z)
+      + clamp(plateous(x,z) * 90, -stepHeight, stepHeight)
+    functions:
+      clamp:
+        arguments: [x, a, b] # clamps x between a (low) and b (high)
+        expression: min(max(x, a), b)
+    samplers:
+      plateous:
+        dimensions: 2
+        type: OPEN_SIMPLEX_2S
+        frequency: 0.01
+        salt: 4
+      surfaceOffset:
+        dimensions: 2
+        type: FBM
+        sampler:
+          type: OPEN_SIMPLEX_2S
+          frequency: 0.006
+        octaves: 3
+        lacunarity: 2.4
+        gain: 0.5
+
+palette:
+  - GRASS_MUSHY: 319
+  - MUDDY_BEACH: 63
+  - << meta.yml:palette-bottom
+
+slant:
+  - threshold: 0.75
+    palette:
+      - CALCITE_DIORITE_MIX: 319
+      - << meta.yml:palette-bottom
+
+features:
+  landforms:
+    - FOSSIL_RIBS
+  flora:
+    - GRASS
+    - LARGE_CEILING_VINES
+    - POPPY_PATCH
+    - PEONY_PATCH
+    - LILAC_PATCH
+    - LILY_OF_THE_VALLEY_PATCH
+    - SMALL_DRIPLEAF
+    - BAMBOO_PATCHES
+  trees:
+    - MESQUITE_TREES
+    - SWAMP_TREES

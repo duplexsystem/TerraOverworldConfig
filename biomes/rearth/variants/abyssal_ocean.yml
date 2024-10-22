@@ -1,0 +1,69 @@
+id: ABYSSAL_ALLEYS
+type: BIOME
+vanilla: minecraft:deep_cold_ocean
+extends: 
+  - PALETTE_OCEAN
+  - ENVIRONMENT_MARINE_OCEAN
+  - CARVING_OCEAN
+  - BASE
+
+color: $biomes/colors.yml:PLAINS
+
+colors:
+  water: 0x050b4f
+  fog: 0x5b8768
+  water-fog: 0x5b8768
+
+vars: &variables
+  base: 25
+  height: 25
+  caveStrength: 27
+  depthCutoff: -35
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      min(-y + base + height * surfaceOffset(x,z), 20)
+      - if(y < depthCutoff, (8 / abs(y - depthCutoff)), 1)
+        * (abs(caves(x,y * 2,z) * caveStrength)
+          + clamp((depth(x,z / 2) + 0.6) * 90, 0, 34 + surfaceOffset(x + 500,z) * height / 4))
+    samplers:
+      surfaceOffset:
+        dimensions: 2
+        type: FBM
+        sampler:
+          type: OPEN_SIMPLEX_2S
+          frequency: 0.006
+        octaves: 3
+        lacunarity: 4
+        gain: 0.3
+      depth:
+        dimensions: 2
+        type: CELLULAR
+        frequency: 0.02
+        distance: Euclidean
+      caves: 
+        dimensions: 3
+        type: OPEN_SIMPLEX_2S
+        frequency: 0.015
+
+palette:
+  - OCEAN_DARK_FLOOR: 319
+  - OCEAN_DARK_FLOOR_DEEP: -30
+  - << meta.yml:palette-bedrock
+
+
+features:
+  landforms:
+    - FOSSIL_OCEAN
+  flora:
+    - CORAL_PLANTS
+    - CORAL_FANS
+  trees:
+    - DENDRIFORM_REEF
+    - BALL_REEF
+  postprocessors:
+    - CONTAIN_FLOATING_WATER_DEEP

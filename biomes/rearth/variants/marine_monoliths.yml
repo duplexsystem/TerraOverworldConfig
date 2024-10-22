@@ -1,0 +1,78 @@
+id: MARINE_MONOLITHS
+type: BIOME
+extends: [ CARVING_LAND, BASE ]
+vanilla: minecraft:beach
+color: $biomes/colors.yml:BEACH
+
+vars: &variables
+  base: 40
+  height: 13
+  topPartHeight: 110
+
+terrain:
+  sampler:
+    dimensions: 3
+    type: EXPRESSION
+    variables: *variables
+    expression: |
+      // positive / higher = solid
+      max(-y + base + surfaceBase(x,z) * height, -3)
+      + if (y < topPartHeight, (clamp((-pillarMask(x,z) - 0.95 + pillarWidth(x,y,z) * 0.04) * 90, -3, 7)), 0)
+      + if (y > topPartHeight - 9, clamp(height * abs(surfaceBase(x / 2, z / 2)) - abs(y - topPartHeight + surfaceBase(x + 1000,z) * 8) + 6, -2, 7), 0)
+    functions:
+      clamp:
+        arguments: [x, a, b] # clamps x between a (low) and b (high)
+        expression: min(max(x, a), b)
+    samplers:
+      pillarWidth:
+        dimensions: 3
+        type: EXPRESSION
+        variables: *variables
+        expression: |
+          max(widthCurve((y - base - 12) / (topPartHeight - base - 30)) - 0.14, 0)
+        functions:
+          widthCurve:
+            arguments: [x]  # basically a 'U' shape from 0-1
+            expression: 1 - 4.166667*x + 4.166667*x^2
+      surfaceBase:
+        dimensions: 2
+        type: FBM
+        sampler:
+          type: OPEN_SIMPLEX_2S
+          frequency: 0.01
+          salt: 3
+        octaves: 3
+        lacunarity: 2
+        gain: 0.5
+      pillarMask:
+        dimensions: 2
+        type: CELLULAR
+        frequency: 0.04
+        jitter: 1.0
+
+palette:
+  - HIGH_CALCITE_DIORITE: 319
+  - DEEP_CALCITE_DIORITE: 110
+  - MUDDY_BEACH: 61
+  - << meta.yml:palette-bottom
+
+
+features:
+  global-preprocessors:
+    # - ARCH_GLOW_LICHEN
+  landforms:
+    - GRANITE_BOULDERS
+    - SMALL_GRANITE_BOULDER_PATCHES
+  flora:
+    - GRASS
+    # - CROSSING_VINES
+    # - LARGE_LEAF_VINES
+    #- LARGE_CEILING_VINES
+    - POPPY_PATCH
+    - DANDELION_PATCH
+    - ROSE_BUSH_PATCH
+    - PEONY_PATCH
+    - LILAC_PATCH
+    - LILY_OF_THE_VALLEY_PATCH
+  trees:
+    # - SPARSE_TEMPERATE_TREE_PATCHES

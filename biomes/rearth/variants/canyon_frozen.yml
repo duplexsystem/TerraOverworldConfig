@@ -1,0 +1,41 @@
+id: ICY_INCISIONS
+type: BIOME
+extends: [ EQ_CANYON, CARVING_LAND, BASE ]
+vanilla: minecraft:dripstone_caves
+color: $biomes/colors.yml:FROZEN_ARCHIPELAGO
+
+colors:
+  sky: 0xA5B0BD
+  fog: 0xD7D8E1
+  grass: 0x86B09B
+  foliage: 0x63A17E
+  water: 0x3F76E4
+  water-fog: 0x50533
+
+palette:
+  - TERRACOTTA_CANYON_ICE_HIGH: 319
+  - FROZEN_CANYON: ${customization.yml:biomeSpread.canyons.minY} + 5
+  - << meta.yml:palette-bottom
+
+slant:
+  - threshold: 0.75
+    palette:
+      - TERRACOTTA_CANYON_ICE_HIGH: 319
+      - TERRACOTTA_CANYON_ICE: 55
+      - << meta.yml:palette-bottom
+
+features:
+  slabs:
+    - SNOW_LAYERS
+  landforms:
+    - GRANITE_BOULDERS_CANYON
+    - CEILING_ICICLES
+  preprocessors:
+    # - LARGE_LEAF_VINES_CANYON_FROZEN
+  trees:
+    - COLD_EVERGREEN_TREES_CANYON
+    - TREE_SNOW_CANYON
+  postprocessors:
+    - CAVE_GLOW_BERRIES
+    - CAVE_GLOW_LICHEN
+    - LARGE_LEAF_VINES_CANYON_FROZEN

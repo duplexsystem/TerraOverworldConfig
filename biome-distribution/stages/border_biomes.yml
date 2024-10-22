@@ -1,0 +1,96 @@
+stages:
+  - type: REPLACE
+    from: _pillow_plains
+    sampler:
+      dimensions: 2
+      type: EXPRESSION
+      variables: 
+        edgeThreshold: ${customization.yml:biomeSpread.borderBiomes.edgeThreshold}
+      expression: |
+        abs(edges(x,z)) - edgeThreshold - 0.1 + cells(x,z) * 0.09
+        // if(cells(x,z) < -edgeThreshold, 1, -1)
+      samplers:
+        cells:
+          dimensions: 2
+          type: CELLULAR
+          jitter: ${customization.yml:biomeSpread.cellJitter}
+          frequency: 1 / ${customization.yml:biomeSpread.cellDistance}  
+        edges:
+          dimensions: 2
+          type: "CELLULAR"
+          return: "Distance2Sub"
+          jitter: ${customization.yml:biomeSpread.cellJitter}
+          frequency: 1 / ${customization.yml:biomeSpread.cellDistance}  
+    to: # -1 = inner, 1 = outer, real range = -1:0.2
+      PILLOW_PLAINS_INNER: 88
+      PILLOW_PLAINS_MIDDLE: 12
+      PILLOW_PLAINS_OUTER: 100
+      # VARIANT_C: 85
+      # VARIANT_H: 15
+      # VARIANT_F: 100
+  - type: REPLACE
+    from: _secluded_valleys
+    sampler:
+      dimensions: 2
+      type: EXPRESSION
+      variables: 
+        edgeThreshold: ${customization.yml:biomeSpread.borderBiomes.edgeThreshold}
+      expression: if(cells(x,z) < -edgeThreshold + 0.1, 1, -1)
+      samplers:
+        cells:
+          dimensions: 2
+          type: CELLULAR
+          jitter: ${customization.yml:biomeSpread.cellJitter}
+          frequency: 1 / ${customization.yml:biomeSpread.cellDistance}
+    to: # 0 = outer, 1 = inner
+      SECLUDED_VALLEY_OUTER: 1
+      SECLUDED_VALLEY: 1
+  - type: REPLACE
+    from: _desert
+    sampler:
+      dimensions: 2
+      type: EXPRESSION
+      expression: if(cells(x,z) < -0.991, 1, -1)
+      samplers:
+        cells:
+          dimensions: 2
+          type: CELLULAR
+          jitter: ${customization.yml:biomeSpread.cellJitter}
+          frequency: 1 / ${customization.yml:biomeSpread.cellDistance}
+    to: # 0 = outer, 1 = inner
+      DESERT: 1
+      OASIS: 1
+  - type: REPLACE
+    from: _plateao
+    sampler:
+      dimensions: 2
+      type: EXPRESSION
+      variables: 
+        edgeThreshold: ${customization.yml:biomeSpread.borderBiomes.edgeThreshold}
+      expression: if(cells(x,z) < -edgeThreshold, 1, -1)
+      samplers:
+        cells:
+          dimensions: 2
+          type: CELLULAR
+          jitter: ${customization.yml:biomeSpread.cellJitter}
+          frequency: 1 / ${customization.yml:biomeSpread.cellDistance}
+    to: # 0 = outer, 1 = inner
+      FOLIAGE_FORTRESS_OUTER: 1
+      _plateao_center: 1
+  - type: REPLACE
+    from: _plateao_center
+    sampler:
+      dimensions: 2
+      type: EXPRESSION
+      variables: 
+        edgeThreshold: ${customization.yml:biomeSpread.borderBiomes.edgeThreshold}
+      expression: if(cells(x,z) < -edgeThreshold - 0.08, 1, -1)
+      samplers:
+        cells:
+          dimensions: 2
+          type: CELLULAR
+          jitter: ${customization.yml:biomeSpread.cellJitter}
+          frequency: 1 / ${customization.yml:biomeSpread.cellDistance}
+    to: # 0 = outer, 1 = inner
+      FOLIAGE_FORTRESS_MIDDLE: 1
+      FOLIAGE_FORTRESS_INNER: 1

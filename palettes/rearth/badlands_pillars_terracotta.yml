@@ -1,0 +1,55 @@
+id: BADLANDS_PILLARS_TERRACOTTA
+type: PALETTE
+
+layers:
+  - materials:
+      - minecraft:stone: 2
+      - minecraft:red_sand: 2
+      # - minecraft:sandstone: 2
+      - minecraft:brown_terracotta: 1
+      - minecraft:pink_terracotta: 1
+      - minecraft:terracotta: 2
+      - minecraft:light_gray_terracotta: 1
+      - minecraft:white_terracotta: 2
+      - minecraft:orange_terracotta: 1
+      - minecraft:yellow_terracotta: 2
+      - minecraft:terracotta: 2
+    layers: 4
+
+
+vars: &variables
+  base: 70
+  height: 15
+  stoneDepth: 5
+
+sampler:
+  type: EXPRESSION
+  variables: *variables
+  expression: |
+    if (-y + (base + noiseBase(x,z) * height) < stoneDepth,
+      if(pillar(x,z) < -0.65, 
+        terracota_rand_height(y, (x + z) / 40) + (2/10), 
+        -0.7),
+      -1)
+  # expression: -1 + 0
+  samplers:
+    noiseBase:
+      dimensions: 2
+      type: OPEN_SIMPLEX_2S
+      frequency: 0.011
+    pillar:
+      dimensions: 2
+      type: CELLULAR
+      frequency: 0.022
+      jitter: 1
+      distance: Euclidean
+    terracota_rand_height:
+      dimensions: 2
+      type: FBM
+      sampler:
+        dimensions: 2
+        type: OPEN_SIMPLEX_2S
+        frequency: 0.09
+      octaves: 2
+      lacunarity: 2
+      gain: 0.3
