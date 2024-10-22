@@ -3,7 +3,7 @@ type: PALETTE
 
 layers:
   - materials:
-      - minecraft:grass_block: 3
+      - minecraft:grass_block: 4
       - minecraft:coarse_dirt: 1
       - minecraft:packed_mud: 2
     layers: 1
@@ -17,7 +17,7 @@ layers:
         octaves: 3
         sampler:
           type: OPEN_SIMPLEX_2
-          frequency: 0.015
+          frequency: 0.025
   - materials:
       - minecraft:dirt: 2
     layers: 1

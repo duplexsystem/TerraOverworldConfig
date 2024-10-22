@@ -13,7 +13,7 @@ locator:
     - type: TOP
       range:
         min: ${meta.yml:deepslate-top} - 7
-        max: ${meta.yml:ocean-level} - 11
+        max: ${meta.yml:ocean-level} + 80
 
 structures:
   distribution:

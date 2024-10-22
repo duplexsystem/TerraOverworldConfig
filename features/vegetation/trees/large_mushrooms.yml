@@ -17,8 +17,8 @@ locator:
     - type: PATTERN
       range: *range
       pattern:
-        type: MATCH
-        block: minecraft:mycelium
+        type: MATCH_SET
+        blocks: $features/vegetation/meta.yml:plantable-blocks
         offset: -1
 
 structures:

@@ -2,6 +2,7 @@ plantable-blocks:
   - minecraft:mud
   - minecraft:grass_block
   - minecraft:podzol
+  - minecraft:mycelium
   - minecraft:dirt
   - minecraft:coarse_dirt
   - minecraft:moss_block
