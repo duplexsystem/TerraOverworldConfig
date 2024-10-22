@@ -1,0 +1,15 @@
+id: SANDY_CHAMBERS
+type: BIOME
+extends: [ CAVE, BASE ]
+vanilla: minecraft:dripstone_caves
+color: $biomes/substratum_cave_colors.yml:SANDY_CHAMBERS
+
+palette:
+  - SANDY_CHAMBERS: 319
+  - SANDY_CHAMBERS_DEEPSLATE: $substratum_meta.yml:strata.deepslate.top
+  - << substratum_meta.yml:palette-bedrock
+
+features:
+  landforms:
+    - GIANT_SAND_STALACMITES
+    - GIANT_SAND_STALACTITES

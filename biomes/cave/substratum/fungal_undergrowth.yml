@@ -1,0 +1,23 @@
+id: FUNGAL_UNDERGROWTH
+type: BIOME
+extends: [ CAVE, BASE ]
+vanilla: minecraft:dripstone_caves
+color: $biomes/substratum_cave_colors.yml:FUNGAL_UNDERGROWTH
+
+colors:
+  grass: 0x9c734d
+  foliage: 0x9c734d
+
+palette:
+  - FUNGAL_UNDERGROWTH: 319
+  - FUNGAL_UNDERGROWTH_DEEPSLATE: $substratum_meta.yml:strata.deepslate.top
+  - << substratum_meta.yml:palette-bedrock
+
+features:
+  trees:
+    - GIANT_RED_MUSHROOMS
+    - GIANT_BROWN_MUSHROOMS
+  flora:
+    - SMALL_CAVE_MUSHROOMS
+    - CAVE_GRASS
+    - HANGING_ROOTS

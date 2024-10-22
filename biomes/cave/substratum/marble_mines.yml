@@ -1,0 +1,15 @@
+id: MARBLE_MINES
+type: BIOME
+extends: [ CAVE, BASE ]
+vanilla: minecraft:dripstone_caves
+color: $biomes/substratum_cave_colors.yml:MARBLE_MINES
+
+palette:
+  - MARBLE_MINES: 319
+  - MARBLE_MINES_DEEPSLATE: $substratum_meta.yml:strata.deepslate.top
+  - << substratum_meta.yml:palette-bedrock
+
+features:
+  landforms:
+    - GIANT_CALCITE_STALACMITES
+    - GIANT_CALCITE_STALACTITES

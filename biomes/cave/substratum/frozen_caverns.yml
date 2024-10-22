@@ -1,0 +1,19 @@
+id: FROZEN_CAVERNS
+type: BIOME
+extends: [ CAVE, BASE ]
+vanilla: minecraft:dripstone_caves
+color: $biomes/substratum_cave_colors.yml:FROZEN_CAVERNS
+
+palette:
+  - FROZEN_CAVERNS: 319
+  - FROZEN_CAVERNS_DEEPSLATE: $substratum_meta.yml:strata.deepslate.top
+  - << substratum_meta.yml:palette-bedrock
+
+features:
+  preprocessors:
+    - SUBSTRATUM_CEILING_ICICLES
+    - SUBSTRATUM_GROUND_ICICLES
+  slabs:
+    - SNOW
+  landforms:
+    - SUBSTRATUM_GIANT_CEILING_ICICLES

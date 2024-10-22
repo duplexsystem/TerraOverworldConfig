@@ -1,0 +1,27 @@
+extrusions:
+  - type: REPLACE
+    from: LAND_CAVES
+    sampler:
+      type: CELLULAR
+      return: CellValue
+      salt: 4357
+      frequency: 1 / ${substratum_meta.yml:biome-distribution.cave-biome-scale} / ${substratum_meta.yml:biome-distribution.global-scale}
+    to:
+      - SELF: 6
+      - HONEY_GROTTO: 1
+      - OVERGROWN_DUGOUT: 1
+      - SANDY_CHAMBERS: 1
+      - SUBTERRANEAN_MESA: 1
+      - MOLTEN_PASSAGES: 1
+      - TERRACOTTA_CAVES: 1
+      - MARBLE_MINES: 1
+      - AMETHYST_HOLLOW: 1
+      - FROZEN_CAVERNS: 1
+      - FUNGAL_UNDERGROWTH: 1
+      #- CORAL_COVES: 1
+      - GRANITE_MINES: 1
+      - ANDESITE_MINES: 1
+      - DIORITE_MINES: 1
+    range:
+      min: $meta.yml:deepslate-bottom
+      max: ${meta.yml:ocean-level} - 13

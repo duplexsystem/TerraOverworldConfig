@@ -1,0 +1,33 @@
+id: CAVE_GRASS
+type: FEATURE
+
+distributor:
+  type: SAMPLER
+  sampler:
+    type: POSITIVE_WHITE_NOISE
+    salt: 7544
+  threshold: 0.125
+
+locator:
+  type: AND
+  locators:
+    - type: PATTERN
+      range: &range
+        min: -69
+        max: 319
+      pattern:
+        type: MATCH_AIR
+        offset: 0
+    - type: PATTERN
+      range: *range
+      pattern:
+        type: MATCH_SET
+        blocks: $features/substratum/vegetation/substratum_meta.yml:plantable-blocks
+        offset: -1
+
+structures:
+  distribution:
+    type: WHITE_NOISE
+  structures:
+    - BLOCK:minecraft:short_grass: 6
+    - tall_grass: 1

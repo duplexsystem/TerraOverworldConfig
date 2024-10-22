@@ -1,0 +1,17 @@
+id: OVERGROWN_DUGOUT
+type: BIOME
+extends: [ CAVE, BASE ]
+vanilla: minecraft:dripstone_caves
+color: $biomes/substratum_cave_colors.yml:OVERGROWN_DUGOUT
+
+palette:
+  - OVERGROWN_DUGOUT: 319
+  - OVERGROWN_DUGOUT_DEEPSLATE: $substratum_meta.yml:strata.deepslate.top
+  - << substratum_meta.yml:palette-bedrock
+
+features:
+  flora:
+    - HANGING_VINES
+    - WALL_VINES
+  postprocessors:
+    - HANGING_COBWEBS

@@ -1,0 +1,13 @@
+id: OVERGROWN_DUGOUT
+type: PALETTE
+
+layers:
+  - materials:
+      - minecraft:stone: 4
+      - minecraft:cobblestone: 3
+      - minecraft:mossy_cobblestone: 2
+      - minecraft:moss_block: 1
+    layers: 1
+    sampler:
+      type: WHITE_NOISE
+      salt: 5678

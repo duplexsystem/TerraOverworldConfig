@@ -1,0 +1,20 @@
+id: MOLTEN_PASSAGES
+type: BIOME
+extends: [ BASE, CAVE ]
+vanilla: minecraft:dripstone_caves
+color: $biomes/substratum_cave_colors.yml:MOLTEN_PASSAGES
+
+palette:
+  - MOLTEN_PASSAGES: 319
+  - MOLTEN_PASSAGES_DEEPSLATE: $substratum_meta.yml:strata.deepslate.top
+  - << substratum_meta.yml:palette-bedrock
+
+features:
+  preprocessors:
+    - MAGMA_STREAMS
+    - LAVA_POOLS
+  landforms:
+    - CHARRED_SPIKES
+  postprocessors:
+    - CAVE_LAVA_COLUMNS
+  
