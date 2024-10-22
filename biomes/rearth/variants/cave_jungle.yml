@@ -65,7 +65,8 @@ slant:
       - << meta.yml:palette-bottom
 
 palette:
-  - GRASS_DENSE_MOSSY: 319
+  - GRASS_DENSE_MOSSY: $meta.yml:top-y
+  - GRASS_DENSE_MOSSY_DEEPSLATE: $meta.yml:deepslate-top
   - << meta.yml:palette-bedrock
 
 features:

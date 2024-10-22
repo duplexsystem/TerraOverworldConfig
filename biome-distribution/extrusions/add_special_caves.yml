@@ -26,7 +26,7 @@ extrusions:
             expression: |
               continents(x, z)
     to:
-      - SELF: 3
+      - SELF: 7
       - INFERNO_ISLES: 1
       - TERRACOTTA_TOMBS: 1
       - VINE_VAULT: 1

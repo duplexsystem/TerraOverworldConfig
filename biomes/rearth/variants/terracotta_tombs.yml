@@ -54,7 +54,8 @@ terrain:
         gain: 0.5
 
 palette:
-  - BADLANDS_PILLARS_TERRACOTTA_CAVE: 319
+  - BADLANDS_PILLARS_TERRACOTTA_CAVE: $meta.yml:top-y
+  - BADLANDS_PILLARS_TERRACOTTA_CAVE_DEEPSLATE: $meta.yml:deepslate-top
   - RED_SAND: -28
   - << meta.yml:palette-bedrock
 

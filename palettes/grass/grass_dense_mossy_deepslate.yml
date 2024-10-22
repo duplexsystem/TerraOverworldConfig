@@ -1,4 +1,4 @@
-id: GRASS_DENSE_MOSSY_DEEPSLATE
+id: GRASS_DENSE_MOSSY
 type: PALETTE
 
 layers:
@@ -10,7 +10,7 @@ layers:
       - minecraft:dirt: 2
     layers: 1
   - materials:
-      - minecraft:deepslate: 1
+      - minecraft:stone: 1
     layers: 1
 
 sampler:

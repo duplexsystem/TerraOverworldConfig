@@ -27,7 +27,7 @@ terrain-base-y-level: 65
 # guide and some configs will lower terrain below this point (however not by much).
 # Default: 65
 
-terrain-height: 230
+terrain-height: 1932
 # Number of blocks above the base terrain level that terrain can go do, similarly to
 # terrain-base-y-level this number is also a guide and some configs will produce terrain
 # above this number (however not by much). Note that the sum of terrain-height and 
@@ -112,7 +112,7 @@ continental-coast-threshold: 0.05
 # correspons to the highest elevation.
 # These options are primarily used in the math/samplers/elevation.yml config file.
 
-elevation-scale: 1
+elevation-scale: 2
 # Controls the scale of the elevation noise map. A larger scale results in larger distances
 # between aspects like mountain ranges and flat areas. If you want more gradual changes in
 # elevation, you can increase this. Conversely, if you want more sudden changes in elevation,

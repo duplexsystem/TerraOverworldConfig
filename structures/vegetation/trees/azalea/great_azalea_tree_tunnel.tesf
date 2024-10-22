@@ -1,7 +1,7 @@
 // First search upwards for an area with enough air space to place the tree
 
 // Search variables
-num maxTunnelHeight = 150;
+num maxTunnelHeight = 384;
 num airGap = 50; // How much air must be above the base of the tree
 num undergroundGap = 3; // Determines how much air must be below the tunnel exit
 

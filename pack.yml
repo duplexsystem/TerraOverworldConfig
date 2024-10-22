@@ -4,6 +4,14 @@ author: "Astrash, Sancires, Aureus, RogueShade"
 
 generator: NOISE_3D
 
+vanilla: "minecraft:overworld"
+vanilla-generation: "minecraft:overworld"
+
+minecraft:
+  height:
+    max: 1024
+    minx: -128
+
 addons:
   biome-provider-pipeline: "2.+"
   biome-provider-single: "1.+"

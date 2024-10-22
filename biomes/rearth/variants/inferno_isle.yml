@@ -48,7 +48,8 @@ terrain:
         gain: 0.5
 
 palette:
-  - BLACKSTONE_BASALT_MIX: 319
+  - BLACKSTONE_BASALT_MIX: $meta.yml:top-y
+  - BLACKSTONE_BASALT_MIX_DEEPSLATE: $meta.yml:deepslate-top
   - << meta.yml:palette-bedrock
 
 features:

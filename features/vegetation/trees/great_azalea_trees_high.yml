@@ -1,4 +1,4 @@
-id: GREAT_AZALEA_TREES
+id: GREAT_AZALEA_TREES_HIGH
 type: FEATURE
 
 distributor:
@@ -13,7 +13,7 @@ locator:
     - type: TOP
       range:
         min: ${meta.yml:deepslate-top} - 7
-        max: ${meta.yml:ocean-level} - 11
+        max: ${meta.yml:ocean-level} + 80
 
 structures:
   distribution:
