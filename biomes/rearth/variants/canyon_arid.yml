@@ -1,16 +1,8 @@
 id: SANDY_SPLITS
 type: BIOME
-extends: [ EQ_CANYON, CARVING_LAND, BASE ]
+extends: [ EQ_CANYON, CARVING_LAND, BASE, COLOR_XERIC ]
 vanilla: minecraft:lush_caves
 color: $biomes/colors.yml:JUNGLE
-
-colors:
-  sky: 0xE2D3B3
-  fog: 0xE2D7C3
-  grass: 0x70E66D
-  foliage: 0x70E66D
-  water: 0x3F76E4
-  water-fog: 0x50533
 
 palette:
   - TERRACOTTA_CANYON_HIGH: 319

@@ -5,7 +5,7 @@
 # See http://terra.polydev.org/config/development/meta-configuration.html for further
 # explanation of how this works.
 
-global-scale: 1
+global-scale: 1.5
 # Modifies the scale of all biome distribution, you can use this parameter 
 # to if you want just about every biome to be larger or smaller.
 # By doubling the scale, you double the length & width of everything,
@@ -342,7 +342,7 @@ spot-radius-max: 150
 biomeSpread:
   # Basic size of biomes (distance between 2 biome centers)
   # Increase to make biomes bigger
-  cellDistance: 350
+  cellDistance: 600
 
   # how far biome centers can vary away from their centers
   # Increase to make biome sizes vary more (scale 0-1)
@@ -368,5 +368,5 @@ biomeSpread:
 
   canyons:
     minY: 25 # how deep down the canyons will go. This is an absolute Y height. Increase to make the canyons shallower
-    canyonAmount: 0.93 # How rare the canyons should be. Range 0-1, with 1 disabling all canyons
+    canyonAmount: 0.97 # How rare the canyons should be. Range 0-1, with 1 disabling all canyons
 
