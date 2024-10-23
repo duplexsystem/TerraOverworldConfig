@@ -84,6 +84,7 @@ palette:
   - WOODED_BADLANDS_LOW: 75
   - SAND: 64
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 features:
   flora:

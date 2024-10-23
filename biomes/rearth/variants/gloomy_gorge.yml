@@ -19,12 +19,14 @@ palette:
   - GRASS_PODZOL_MUDDY: 71
   - SAND: 64
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 slant:
   - threshold: 0.7
     palette:
       - ROCKY_SLANT_DARK: 319
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
 
 features:
   preprocessors:

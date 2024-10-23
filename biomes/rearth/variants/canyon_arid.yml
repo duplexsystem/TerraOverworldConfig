@@ -8,6 +8,7 @@ palette:
   - TERRACOTTA_CANYON_HIGH: 319
   - SAND_CANYON: ${customization.yml:biomeSpread.canyons.minY} + 5
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 slant:
   - threshold: 0.75
@@ -15,6 +16,7 @@ slant:
       - TERRACOTTA_CANYON_HIGH: 319
       - TERRACOTTA_CANYON: 55
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
 
 features:
   landforms:

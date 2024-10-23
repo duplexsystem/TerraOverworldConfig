@@ -29,6 +29,7 @@ palette:
   - GRASS_SNOW_MIX: 110
   - SAND: 65
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 ocean:
   palette: FROZEN_OCEAN

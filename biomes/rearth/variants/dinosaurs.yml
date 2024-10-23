@@ -45,12 +45,14 @@ palette:
   - GRASS_MUSHY: 319
   - MUDDY_BEACH: 63
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 slant:
   - threshold: 0.75
     palette:
       - CALCITE_DIORITE_MIX: 319
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
 
 features:
   landforms:

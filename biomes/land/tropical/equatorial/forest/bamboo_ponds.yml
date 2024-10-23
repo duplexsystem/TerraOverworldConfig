@@ -34,6 +34,7 @@ slant:
       - << meta.yml:palette-ocean-level-sand
       - << meta.yml:palette-underwater
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
   - threshold: 0.995
     palette:
       - BAMBOO_PONDS: $meta.yml:top-y

@@ -57,12 +57,14 @@ palette:
   - GRASS_MUSHY: 78
   - MUDDY_BEACH: 63
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 slant:
   - threshold: 0.3
     palette:
       - BLOCK:minecraft:stone: 319
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
 
 features:
   preprocessors:

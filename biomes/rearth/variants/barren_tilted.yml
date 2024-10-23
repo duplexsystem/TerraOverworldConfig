@@ -71,6 +71,7 @@ palette:
   - BLANK_DARK_STONE: 140
   - SAND: 64
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 features:
   preprocessors:

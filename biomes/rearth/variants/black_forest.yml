@@ -11,6 +11,7 @@ palette:
   - BLACK_FOREST_GROUND: $meta.yml:top-y
   - SAND: 63
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 features:
   preprocessors:

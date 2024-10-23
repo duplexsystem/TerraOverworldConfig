@@ -86,6 +86,7 @@ palette:
   - SAND: 64
   - MUDDY_BEACH: 61
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 slant:
   - threshold: 0.96
@@ -93,6 +94,7 @@ slant:
       - MOSS_STONE: 319
       - GRASS: 79
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
 
 features:
   global-preprocessors:

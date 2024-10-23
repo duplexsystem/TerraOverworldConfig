@@ -22,12 +22,14 @@ tags:
 palette:
   - MUD: $meta.yml:top-y
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 slant:
   - threshold: 0.4
     palette:
       - << meta.yml:palette-slant-generic
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
 
 features:
   preprocessors:

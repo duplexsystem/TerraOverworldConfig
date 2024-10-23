@@ -13,6 +13,7 @@ palette:
   - GRASS_PODZOL_MUDDY: 75
   - MUDDY_BEACH: 63
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 slant:
   - threshold: 0.7
@@ -20,6 +21,7 @@ slant:
       - ROCKY_SLANT: 319
       # - CALCITE_DIORITE_MIX: 319
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
 
 features:
   landforms:

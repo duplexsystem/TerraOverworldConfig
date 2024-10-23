@@ -22,6 +22,7 @@ palette:
   - GRASS_SANDY_VARIATION: 150
   - SAND: 65
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 features:
   preprocessors:

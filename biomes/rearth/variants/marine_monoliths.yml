@@ -55,6 +55,7 @@ palette:
   - DEEP_CALCITE_DIORITE: 110
   - MUDDY_BEACH: 61
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 
 features:

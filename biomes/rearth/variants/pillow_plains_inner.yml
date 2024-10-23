@@ -87,6 +87,7 @@ palette:
   - GRASS_WHITE_PILLAR: 319
   - GRASS: 56
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 features:
   global-preprocessors:

@@ -119,6 +119,7 @@ palette:
   - GRASS_VARIATION: 319
   - SAND: 64
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 features:
   landforms:

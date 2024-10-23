@@ -85,12 +85,14 @@ slant:
       - MOUNTAIN_RIVERS_SAND: 65
       - SAND: 61
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
 
 palette:
   - MOUNTAIN_RIVERS: 319
   - MOUNTAIN_RIVERS_SAND: 65
   - SAND: 61
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 features:
   flora:

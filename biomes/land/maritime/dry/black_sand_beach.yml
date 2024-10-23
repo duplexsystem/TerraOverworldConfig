@@ -21,6 +21,7 @@ palette:
   - BLACK_SAND_BEACH: $meta.yml:top-y
   - BLACKSTONE: $meta.yml:ocean-level
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 slant:
   - threshold: 0.4
@@ -28,5 +29,6 @@ slant:
       - BLOCK:minecraft:stone: $meta.yml:top-y
       - BLACKSTONE: $meta.yml:ocean-level
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
 
 slant-depth: 10

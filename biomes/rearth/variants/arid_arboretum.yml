@@ -84,12 +84,14 @@ palette:
   - ARID: 319
   - MUDDY_BEACH: 63
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 slant:
   - threshold: 0.75
     palette:
       - BADLANDS_STRATA: 319
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
 
 features:
   preprocessors:

@@ -28,6 +28,7 @@ terrain:
 palette:
   - GRASS_VARIATION: 319
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 features:
   landforms:

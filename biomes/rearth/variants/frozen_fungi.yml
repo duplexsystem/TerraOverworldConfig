@@ -17,6 +17,7 @@ palette:
   - SHROOM_SNOW_MIX: 319
   - MUDDY_BEACH: 63
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 features:
   preprocessors:

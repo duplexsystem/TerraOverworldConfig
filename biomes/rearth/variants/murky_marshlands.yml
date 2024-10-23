@@ -46,6 +46,7 @@ palette:
   - MUDDY_GRASS: 319
   - GRASS_PODZOL_MUDDY: 62
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 slant:
   - threshold: 1.02
@@ -53,6 +54,7 @@ slant:
       - MOSS_TUFF: 319
       - GRASS_PODZOL_MUDDY: 62
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
 
 slant-depth: 1
 

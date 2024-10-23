@@ -46,6 +46,7 @@ palette:
   - SANDY_GRASS: 319
   - MUDDY_BEACH: 62
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 features:
   landforms:

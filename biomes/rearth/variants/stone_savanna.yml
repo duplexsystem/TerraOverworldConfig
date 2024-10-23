@@ -19,12 +19,14 @@ palette:
   - SAVANNA_BRIDGES: 62
   - MUDDY_BEACH: 61
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 slant:
   - threshold: 0.75
     palette:
       - BLOCK:minecraft:stone: 319
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
 
 features:
   landforms:

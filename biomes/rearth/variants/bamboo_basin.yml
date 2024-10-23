@@ -69,6 +69,7 @@ terrain:
 palette:
   - EUCALYPTUS_MOUNTAIN_RIVER: 319
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 features:
   underwater-flora:

@@ -22,6 +22,7 @@ palette:
   - GRASS: 319
   - SAND: 64
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 features:
   global-preprocessors:

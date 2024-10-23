@@ -78,6 +78,7 @@ palette:
   - GRASS: 69
   - SAND: 64
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 features:
   preprocessors:

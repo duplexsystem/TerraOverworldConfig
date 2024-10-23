@@ -19,12 +19,14 @@ ocean:
 palette:
   - LAND_GLACIER: $meta.yml:top-y
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 slant:
   - threshold: 0.8
     palette:
       - LAND_GLACIER: $meta.yml:top-y
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
 
 slant-depth: 15
 

@@ -17,6 +17,7 @@ palette:
   - GRASS_DENSE_MOSSY: 319
   - MUDDY_BEACH: 63
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
   
 features:

@@ -59,10 +59,12 @@ slant:
     palette:
       - MOSS_STONE: $meta.yml:top-y
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
   - threshold: 0.4
     palette:
       - MOSSY_COBBLESTONE_STONE: $meta.yml:top-y
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
 
 palette:
   - GRASS_DENSE_MOSSY: $meta.yml:top-y

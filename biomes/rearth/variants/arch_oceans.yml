@@ -90,6 +90,7 @@ palette:
   - GREEN_STONE_MIX: 319
   - SAND: 61
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 slant-depth: 4
 
@@ -99,6 +100,7 @@ slant:
       - GREEN_STONE_MIX: 319
       - GRAVEL: 61
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
 
 features:
   underwater-flora:

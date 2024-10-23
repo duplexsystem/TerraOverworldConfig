@@ -22,6 +22,7 @@ palette:
   - GRASS: $meta.yml:top-y
   - MUD: $meta.yml:ocean-level
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 slant-depth: 5
 
@@ -31,11 +32,13 @@ slant:
       - XERIC_MUD: $meta.yml:top-y
       - MUD: $meta.yml:ocean-level
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
   - threshold: 0.4
     palette:
       - XERIC_SLANT: $meta.yml:top-y
       - MUD: $meta.yml:ocean-level
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
 
 features:
   flora:
