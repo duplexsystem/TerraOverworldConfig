@@ -9,9 +9,9 @@ vanilla-generation: "minecraft:overworld"
 
 minecraft:
   height:
+    logical: 1024
     max: 1024
     min: -128
-    logical: 1024
 
 addons:
   biome-provider-pipeline: "2.+"
