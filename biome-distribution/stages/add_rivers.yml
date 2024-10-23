@@ -20,8 +20,8 @@ riverSampler: &riverSampler
       type: PROBABILITY
       sampler:
         type: OPEN_SIMPLEX_2
-        salt: 4812
-        frequency: 0.003
+        salt: 4783
+        frequency: 0.001
 
 # Tags are used by biomes to determine the kind of river to use, except for biomes with
 # their own specific river biome. These tags are formatted by the type of river, and optionally

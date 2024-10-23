@@ -21,7 +21,7 @@ stages:
   - type: REPLACE
     from: volcano
     to:
-      - extinct-volcano: 5
+      - extinct-volcano: 4
       - active-volcano: 1
     sampler:
       type: EXPRESSION
@@ -30,7 +30,7 @@ stages:
   - type: REPLACE
     from: extinct-volcano
     to:
-      - extinct-volcano: 4
+      - extinct-volcano: 3
       # - crater-lake: 1 # Crater lakes are disabled until a good method of adding fluid is implemented
     sampler:
       type: EXPRESSION
@@ -39,7 +39,7 @@ stages:
   - type: REPLACE
     from: active-volcano
     to:
-      - ERUPTED_VOLCANO: 4
+      - ERUPTED_VOLCANO: 3
       - PRISMATIC_SPRING: 1
     sampler:
       type: EXPRESSION

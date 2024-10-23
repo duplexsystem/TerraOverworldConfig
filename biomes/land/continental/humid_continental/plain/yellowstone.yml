@@ -27,6 +27,7 @@ palette:
   - << meta.yml:palette-ocean-level-sand
   - << meta.yml:palette-underwater
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 slant:
   - threshold: 0.55
@@ -34,11 +35,13 @@ slant:
       - YELLOWSTONE: $meta.yml:top-y
       - CALCITE: ${meta.yml:ocean-level} + 11
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
   - threshold: 0.5
     palette:
       - YELLOWSTONE_RED_SAND: $meta.yml:top-y
       - CALCITE: ${meta.yml:ocean-level} + 11
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
   - threshold: 0.45
     palette:
       - YELLOWSTONE_BASALT: $meta.yml:top-y

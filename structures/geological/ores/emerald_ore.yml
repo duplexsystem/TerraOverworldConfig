@@ -7,4 +7,4 @@ material: minecraft:emerald_ore
 material-overrides:
   minecraft:deepslate: minecraft:deepslate_emerald_ore
 
-size: 3
+size: 5

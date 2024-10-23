@@ -22,27 +22,32 @@ palette:
   - << meta.yml:palette-ocean-level-sand
   - << meta.yml:palette-underwater
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 slant-depth: 1
 
 slant:
-  - threshold: 0.8
+  - threshold: 0.9
     palette:
       - GRASS: $meta.yml:top-y
       - << meta.yml:palette-underwater
       - << meta.yml:palette-bottom
-  - threshold: 0.5
+      - << meta.yml:palette-deep
+  - threshold: 0.4
     palette:
       - BLOCK:minecraft:mossy_cobblestone: $meta.yml:top-y
       - << meta.yml:palette-bottom
-  - threshold: 0.45
+      - << meta.yml:palette-deep
+  - threshold: 0.6
     palette:
       - BLOCK:minecraft:cobblestone: $meta.yml:top-y
       - << meta.yml:palette-bottom
-  - threshold: 0.4
+      - << meta.yml:palette-deep
+  - threshold: 0.45
     palette:
       - BLOCK:minecraft:stone: $meta.yml:top-y
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
       
 features:
   flora:

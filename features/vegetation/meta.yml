@@ -49,6 +49,8 @@ dripleaf-plantable-blocks:
   - minecraft:rooted_dirt
 
 sculk-plantable-blocks:
+  - minecraft:sand
+  - minecraft:sandstone
   - minecraft:stone
   - minecraft:tuff
   - minecraft:deepslate
@@ -67,3 +69,4 @@ sculk-plantable-blocks:
   - minecraft:dark_oak_log
   - minecraft:dark_oak_planks
   - minecraft:dark_oak_fence
+  - minecraft:blackstone
