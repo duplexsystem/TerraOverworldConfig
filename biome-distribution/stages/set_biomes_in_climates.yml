@@ -315,6 +315,7 @@ stages:
           - _desert: 4
           - PEARLESCENT_DESERT: 1
           - SALT_FLATS: 1
+          - DESERT_SAVANNA_OVERHANGS: 1
         hot-desert-white:
           - _desert: 1
           - DESERT_PILLARS: 1
@@ -323,6 +324,7 @@ stages:
           - DESERT_TERRACES: 1
           - ROCKY_DESERT: 1
           - PEARLESCENT_DESERT: 1
+          - JUNGLE_DESERT_TERRACES: 1
         hot-desert-highlands-white:
           - DESERT_PILLARS: 1
           - DESERT_SPIKES: 1
@@ -330,6 +332,7 @@ stages:
           - DESERT_TERRACES: 1
           - ROCKY_DESERT: 1
           - PEARLESCENT_DESERT: 1
+          - JUNGLE_DESERT_TERRACES: 1
 
         # Red hot steppe
         hot-steppe-flat-red:
@@ -351,6 +354,7 @@ stages:
         hot-steppe-flat-white:
           - XERIC_SHRUBLAND: 1
           - TAR_PITS: 1
+          - DESERT_SAVANNA_OVERHANGS: 1
         hot-steppe-white:
           - XERIC_SHRUBLAND: 1
           - TAR_PITS: 1
@@ -453,6 +457,7 @@ stages:
           - WET_SAVANNA: 1
         tropical-savanna-wet-highlands:
           - SAVANNA_OVERHANGS: 1
+          - DESERT_SAVANNA_OVERHANGS: 1
 
         tropical-coast-flat:
           - MUDDY_COASTS: 1

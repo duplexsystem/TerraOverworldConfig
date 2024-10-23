@@ -16,7 +16,7 @@ colors:
   foliage: 0xe8cf68
 
   climate:
-    precipitation: rain
+    precipitation: true
     temperature: 2.0
     downfall: 1.0
 

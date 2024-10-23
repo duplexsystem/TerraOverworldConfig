@@ -5,6 +5,7 @@ color: $biomes/colors.yml:RED_DESERT
 
 tags:
   - LAND_CAVES
+  - DESERT_CAVES
   - USE_RIVER
 
 palette:

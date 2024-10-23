@@ -1,20 +1,5 @@
 extrusions:
   - type: REPLACE
-    from: LAND_CAVES
-    sampler:
-      type: CELLULAR
-      return: CellValue
-      salt: 1252
-      frequency: 1 / 200 / ${customization.yml:cave-biome-scale} / ${customization.yml:global-scale}
-    to:
-      - SELF: 6
-      - LUSH_CAVES: 1
-      - DRIPSTONE_CAVES: 1
-    range:
-      min: $meta.yml:deepslate-bottom
-      max: ${meta.yml:ocean-level} - 13
-
-  - type: REPLACE
     from: ICE_CAVES
     sampler:
       type: CELLULAR
@@ -22,8 +7,49 @@ extrusions:
       salt: 1252
       frequency: 1 / 200 / ${customization.yml:cave-biome-scale} / ${customization.yml:global-scale}
     to:
-      - SELF: 3
+      - SELF: 4
       - ICE_CAVES: 7
+      - FROZEN_DRIPSTONE_CAVES: 1
+    range:
+      min: $meta.yml:deepslate-bottom
+      max: ${meta.yml:ocean-level} - 13
+
+  - type: REPLACE
+    from: DESERT_CAVES
+    sampler:
+      type: CELLULAR
+      return: CellValue
+      salt: 1252
+      frequency: 1 / 200 / ${customization.yml:cave-biome-scale} / ${customization.yml:global-scale}
+    to:
+      - SELF: 4
+      - SANDY_CHAMBERS: 7
+      - SUBTERRANEAN_MESA: 2
+      - TERRACOTTA_CAVES: 4
+      - DESERT_LUSH_CAVES: 2
+    range:
+      min: $meta.yml:deepslate-bottom
+      max: ${meta.yml:ocean-level} - 13
+
+  - type: REPLACE
+    from: LAND_CAVES
+    sampler:
+      type: CELLULAR
+      return: CellValue
+      salt: 1252
+      frequency: 1 / 200 / ${customization.yml:cave-biome-scale} / ${customization.yml:global-scale}
+    to:
+      - SELF: 14
+      - LUSH_CAVES: 1
+      - DRIPSTONE_CAVES: 1
+      - HONEY_GROTTO: 1
+      - OVERGROWN_DUGOUT: 1
+      - MARBLE_MINES: 1
+      - AMETHYST_HOLLOW: 1
+      - FUNGAL_UNDERGROWTH: 1
+      - GRANITE_MINES: 1
+      - ANDESITE_MINES: 1
+      - DIORITE_MINES: 1
     range:
       min: $meta.yml:deepslate-bottom
       max: ${meta.yml:ocean-level} - 13

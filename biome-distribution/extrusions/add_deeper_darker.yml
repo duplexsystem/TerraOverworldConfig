@@ -8,6 +8,7 @@ extrusions:
     to:
       - SELF: 4
       - DEEPER_DARKER: 1
+      - MOLTEN_PASSAGES: 1
     range:
       min: $meta.yml:bottom-y
       max: $meta.yml:blackstone-top

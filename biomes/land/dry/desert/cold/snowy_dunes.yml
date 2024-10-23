@@ -11,6 +11,7 @@ vanilla: minecraft:snowy_plains
 
 tags:
   - LAND_CAVES
+  - ICE_CAVES
   - USE_DESERT_RIVER
 
 palette:

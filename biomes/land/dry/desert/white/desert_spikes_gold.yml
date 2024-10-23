@@ -5,6 +5,7 @@ color: $biomes/colors.yml:DESERT_SPIKES_GOLD
 
 tags:
   - LAND_CAVES
+  - DESERT_CAVES
   - USE_DESERT_RIVER
 
 slant:
