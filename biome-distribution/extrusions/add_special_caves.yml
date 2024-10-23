@@ -1,6 +1,6 @@
 extrusions:
   - type: REPLACE
-    from: ALL
+    from: LAND_CAVES
     sampler: &caveSampler
       type: EXPRESSION
       expression: |
