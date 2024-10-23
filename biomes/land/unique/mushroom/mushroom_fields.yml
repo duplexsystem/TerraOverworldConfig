@@ -13,18 +13,21 @@ palette:
   - MYCELIUM: $meta.yml:top-y
   - SAND: ${meta.yml:ocean-level} + 1
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 slant:
-  - threshold: 0.45
+  - threshold: 0.6
     palette:
       - BLOCK:minecraft:light_gray_terracotta: $meta.yml:top-y
       - SAND: ${meta.yml:ocean-level} + 1
       - << meta.yml:palette-bottom
-  - threshold: 0.4
+      - << meta.yml:palette-deep
+  - threshold: 0.3
     palette:
       - BLOCK:minecraft:stone: $meta.yml:top-y
       - SAND: ${meta.yml:ocean-level} + 1
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
 
 features:
   trees:

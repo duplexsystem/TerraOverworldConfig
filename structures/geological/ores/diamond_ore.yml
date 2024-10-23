@@ -7,6 +7,6 @@ material: minecraft:diamond_ore
 material-overrides:
   minecraft:deepslate: minecraft:deepslate_diamond_ore
 
-size: 8
+size: 4
 
-exposed: 0.2
+exposed: 0.1

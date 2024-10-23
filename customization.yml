@@ -27,7 +27,7 @@ terrain-base-y-level: 65
 # guide and some configs will lower terrain below this point (however not by much).
 # Default: 65
 
-terrain-height: 1932
+terrain-height: 300
 # Number of blocks above the base terrain level that terrain can go do, similarly to
 # terrain-base-y-level this number is also a guide and some configs will produce terrain
 # above this number (however not by much). Note that the sum of terrain-height and 
@@ -39,7 +39,7 @@ terrain-ocean-base-y-level: 60
 # The base ocean terrain y level, generally the highest level for terrain for ocean biomes.
 # Default 60
 
-terrain-ocean-depth: 100
+terrain-ocean-depth: 120
 # The number of blocks below terain-ocean-base-y-level that ocean terrain will go. Note
 # that this number subtracted from terrain-ocean-base-y-level should not be lower than
 # the lower bound of the world height range, otherwise you might end up with void holes in
@@ -80,11 +80,29 @@ continental-spread: 1
 #
 # Default: 1
 
-continental-scale: 1
+spawn-island-radius-middle: 125
+# Radius from origin where continental value is set to 0, i.e where the coast is.
+# Default: 125
+
+spawn-island-radius-outer: 400
+# Radius from origin where continental value is set to -1, i.e deep ocean.
+# Default: 400
+
+# ---
+# Continental
+# ---
+
+continental-scale: 2
 # Controls the scale of land / coastal / oceanic distribution. Increasing
 # this produces larger landmasses and larger oceans, and vice-versa when
 # decreasing it. This does not control the ratio of land / ocean, for that
 # you should change continental-offset instead.
+# Default: 1
+
+continental-offset: 0.2
+# Default: 0.2
+
+continental-spread: 2
 # Default: 1
 
 continental-coast-width: 20
@@ -158,7 +176,7 @@ elevation-continental-flat-threshold: -0.3
 # the terrain-factor-continental option is enabled
 # Default: -0.3
 
-elevation-factor-rivers: 1
+elevation-factor-rivers: 0
 # Determines if terrain will gradually reduce closer to rivers.
 # 1 = true, 0 = false
 # Default: 1
@@ -281,16 +299,16 @@ ocean-deep-threshold: -0.8
 # Rivers
 # ---
 
-river-spread-scale: 1
+river-spread-scale: 3
 # Controls how far / close apart rivers generally are, larger scale = further apart
 # rivers, smaller scale = closer packed together rivers.
 # Default: 1
 
-river-min-width: 13
+river-min-width: 5
 # Controls in blocks the minimum width of rivers.
 # Default: 13
 
-river-max-width: 30
+river-max-width: 10
 # Controls in blocks the maximum width of rivers.
 # Default: 30
 

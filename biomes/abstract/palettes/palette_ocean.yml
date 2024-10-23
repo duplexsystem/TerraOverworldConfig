@@ -6,6 +6,7 @@ palette:
   - SAND: $meta.yml:top-y
   - SAND_STONE_MIX: ${meta.yml:deepslate-top} + 10
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 slant-depth: 4
 
@@ -15,3 +16,4 @@ slant:
       - BLOCK:minecraft:stone: $meta.yml:top-y
       - GRAVEL: 61
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep

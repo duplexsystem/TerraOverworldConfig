@@ -1,0 +1,45 @@
+id: DESERT_LUSH_CAVES
+type: BIOME
+extends:
+  - CAVE
+  - BASE
+color: $biomes/colors.yml:DESERT
+
+vanilla: minecraft:lush_caves
+
+colors:
+  sky: 0x81ca71
+  fog: 0x477c1f
+  water: 0x14A2C5
+  water-fog: 0x14A2C5
+  grass: 0xe8cf68
+  foliage: 0xe8cf68
+
+  climate:
+    precipitation: rain
+    temperature: 2.0
+    downfall: 1.0
+
+palette:
+  - DESERT_LUSH_CAVES_SANDSTONE: $meta.yml:top-y
+  - SAND: $meta.yml:deepslate-top
+  - << meta.yml:palette-bedrock
+
+tags:
+  - USE_RIVER_TEMPERATE_MARSH
+
+features:
+  preprocessors:
+    - LUSH_CAVE_WATER_POOLS
+  landforms:
+    - GREAT_AZALEA_TREES
+  flora:
+    - LARGE_LEAF_VINES_UNDERGROUND
+    - CAVE_GLOW_BERRIES
+    - CACTUS_SPARSE_CAVE
+    - CAVE_SPORE_BLOSSOMS
+    - DEAD_BUSHES_CAVE
+    - JUNGLE_LEAVES
+    - FLOWERING_AZALEA_BLOCK
+    - DEAD_PLANTS
+    - DEAD_CORAL

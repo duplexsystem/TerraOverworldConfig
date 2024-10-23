@@ -23,6 +23,7 @@ palette:
   - MUDDY_GRASS: ${meta.yml:ocean-level} + 14
   - MUD: $meta.yml:ocean-level
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 slant:
   - threshold: 0.2

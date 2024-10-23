@@ -18,12 +18,14 @@ tags:
 palette:
   - RED_SAND: $meta.yml:top-y
   - << meta.yml:palette-bottom
+  - << meta.yml:palette-deep
 
 slant:
   - threshold: 0.4
     palette:
       - BADLANDS_STRATA: $meta.yml:top-y
       - << meta.yml:palette-bottom
+      - << meta.yml:palette-deep
 
 features:
   flora:
