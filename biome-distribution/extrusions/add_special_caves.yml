@@ -1,5 +1,39 @@
 extrusions:
   - type: REPLACE
+    from: DESERT_CAVES
+    sampler: &caveSampler
+      type: EXPRESSION
+      expression: |
+        if (caves(x,y*2,z) < -0.79 && caveElevation(x, y*2, z) > 0.1, 
+          caveVariation(x,y*2,z),
+          -1)
+      samplers:
+        caves: &caveSettings
+          dimensions: 3
+          type: CELLULAR
+          frequency: 0.0005
+          jitter: 0.05
+          salt: 26
+        caveVariation:
+          <<: *caveSettings
+          return: CellValue
+        caveElevation:
+          <<: *caveSettings
+          return: NoiseLookup
+          lookup:
+            dimensions: 3
+            type: EXPRESSION
+            expression: |
+              continents(x, z)
+    to:
+      - SELF: 7
+      - INFERNO_ISLES: 1
+      - TERRACOTTA_TOMBS: 1
+    range:
+      min: -30
+      max: 40
+
+  - type: REPLACE
     from: LAND_CAVES
     sampler: &caveSampler
       type: EXPRESSION
@@ -11,7 +45,7 @@ extrusions:
         caves: &caveSettings
           dimensions: 3
           type: CELLULAR
-          frequency: 0.005
+          frequency: 0.0005
           jitter: 0.05
           salt: 24
         caveVariation:
@@ -28,8 +62,9 @@ extrusions:
     to:
       - SELF: 7
       - INFERNO_ISLES: 1
-      - TERRACOTTA_TOMBS: 1
       - VINE_VAULT: 1
     range:
       min: -30
       max: 40
+
+

@@ -5,7 +5,7 @@
 # See http://terra.polydev.org/config/development/meta-configuration.html for further
 # explanation of how this works.
 
-global-scale: 1.5
+global-scale: 1.25
 # Modifies the scale of all biome distribution, you can use this parameter 
 # to if you want just about every biome to be larger or smaller.
 # By doubling the scale, you double the length & width of everything,
