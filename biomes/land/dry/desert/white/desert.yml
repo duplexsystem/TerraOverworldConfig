@@ -31,6 +31,7 @@ features:
   flora:
     - CACTUS_SPARSE
     - DEAD_BUSHES
-  landforms:
+  structures:
     - MOB_ROOMS
     - DESERT_WELLS
+    - FOSSILS

@@ -48,3 +48,6 @@ features:
     - OAK_BUSHES
     - SWAMP_TREES
     - DEAD_SWAMP_TREES
+  structures:
+    - MOB_ROOMS
+    - FOSSILS
