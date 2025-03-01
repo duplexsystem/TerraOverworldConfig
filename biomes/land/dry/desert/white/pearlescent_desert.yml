@@ -77,3 +77,7 @@ features:
     - GRASS_DENSE
     - CACTUS_SPARSE
     - DEAD_BUSHES
+  structures:
+    - MOB_ROOMS
+    - DESERT_WELLS
+    - FOSSILS

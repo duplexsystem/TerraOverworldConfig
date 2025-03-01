@@ -7,3 +7,9 @@ palette:
   - RED_WHITE_SAND_MIX: $meta.yml:top-y
   - << meta.yml:palette-bottom
   - << meta.yml:palette-deep
+
+
+features:
+  structures:
+    - MOB_ROOMS
+    - FOSSILS

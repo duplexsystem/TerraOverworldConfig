@@ -6,7 +6,7 @@ color: $biomes/colors.yml:RED_DESERT
 tags:
   - LAND_CAVES
   - DESERT_CAVES
-  - USE_RIVER
+  - USE_RED_DESERT_RIVER
 
 palette:
   - RED_SAND: $meta.yml:top-y
