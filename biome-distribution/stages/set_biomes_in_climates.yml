@@ -12,10 +12,10 @@ stages:
       - FROZEN_FUNGI: 1
     to:
         ice-cap:
-          - SNOWY_MOUNTAINS: 2
+          - SNOWY_TUFF_MOUNTAINS: 1
           - MOUNTAIN_MIRRORS: 1
         ice-cap-highlands:
-          - SNOWY_MOUNTAINS: 2
+          - SNOWY_BLACKSTONE_MOUNTAINS: 1
           - MOUNTAIN_MIRRORS: 1
         
         tundra-flat:
@@ -25,7 +25,7 @@ stages:
           - TUNDRA: 1
           - TUNDRA_TRACKS: 1
         tundra-highlands:
-          - SNOWY_MOUNTAINS: 1
+          - SNOWY_TUFF_MOUNTAINS: 1
           - ALPINE_ASCENDANCY: 1
         
         polar-coast-flat:
