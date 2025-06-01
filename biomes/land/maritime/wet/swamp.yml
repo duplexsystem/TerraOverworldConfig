@@ -50,4 +50,4 @@ features:
     - DEAD_SWAMP_TREES
   structures:
     - MOB_ROOMS
-    - FOSSILS
+    - SPARSE_FOSSILS

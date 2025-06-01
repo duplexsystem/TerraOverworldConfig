@@ -62,29 +62,32 @@ stages:
 
   
         boreal-hot-flat:
-          - AUTUMNAL_FOREST: 1
-          - FLOWERING_AUTUMNAL_FOREST: 1
-          - BIRCH_FOREST: 1
+          - ASPEN_FOREST: 1
+          - BIRCH_FOREST: 2
+          - MAPLE_GROVE: 1
         boreal-hot:
-          - AUTUMNAL_FOREST: 1
-          - FLOWERING_AUTUMNAL_FOREST: 1
+          - ASPEN_FOREST: 1
+          - MAPLE_GROVE: 1
           - BIRCH_FOREST: 1
         boreal-hot-highlands:
           - MOUNTAINS: 1
         
         boreal-warm-flat:
-          - AUTUMNAL_FOREST: 1
-          - FLOWERING_AUTUMNAL_FOREST: 1
-          - BIRCH_FOREST: 1
+          - ASPEN_FOREST: 1
+          - BIRCH_FOREST: 2
+          - MAPLE_GROVE: 1
         boreal-warm:
           - TALL_TIMBERLAND: 1
-          - TAIGA: 5
+          - TAIGA_CLEARING: 1
+          - TAIGA: 3
         boreal-warm-highlands:
           - MOUNTAINS: 1
 
         boreal-cold-flat:
           - TAIGA: 1
+          - TAIGA_CLEARING: 1
         boreal-cold:
+          - TAIGA_CLEARING: 1
           - TAIGA: 1
         boreal-cold-highlands:
           - MOUNTAINS: 1
@@ -98,9 +101,9 @@ stages:
           - SNOWY_MOUNTAINS: 1
         
         boreal-hot-dry-flat:
-          - AUTUMNAL_FOREST: 1
-          - FLOWERING_AUTUMNAL_FOREST: 1
-          - BIRCH_FOREST: 1
+          - ASPEN_FOREST: 1
+          - BIRCH_FOREST: 2
+          - MAPLE_GROVE: 1
         boreal-hot-dry:
           - TAIGA: 1
         boreal-hot-dry-highlands:
@@ -108,6 +111,7 @@ stages:
 
         boreal-warm-dry-flat:
           - TAIGA: 1
+          - TAIGA_CLEARING: 1
         boreal-warm-dry:
           - TAIGA: 1
         boreal-warm-dry-highlands:
@@ -115,6 +119,7 @@ stages:
 
         boreal-cold-dry-flat:
           - TAIGA: 1
+          - TAIGA_CLEARING: 1
         boreal-cold-dry:
           - TAIGA: 1
         boreal-cold-dry-highlands:
@@ -130,6 +135,7 @@ stages:
         boreal-coast-flat:
           - ROCKY_ARCHIPELAGO: 5
           - SHALE_BEACH: 1
+          - COASTAL_PINE_BARRENS: 1
         boreal-coast:
           - ROCKY_SEA_CAVES: 1
         boreal-coast-highlands:
@@ -165,6 +171,7 @@ stages:
           - MOORLAND: 1
         temperate-hot-dry:
           - CHAPARRAL: 1
+          - PALM_FOREST: 1
           - MOORLAND: 1
         temperate-hot-dry-highlands:
           - DRY_TEMPERATE_MOUNTAINS: 1
@@ -176,6 +183,7 @@ stages:
           - MOORLAND: 1
         temperate-warm-dry:
           - CHAPARRAL: 1
+          - PALM_FOREST: 1
           - MOORLAND: 1
         temperate-warm-dry-highlands:
           - DRY_TEMPERATE_MOUNTAINS: 1
@@ -208,6 +216,7 @@ stages:
           - RAINFOREST: 1
           - BROADLEAF_FOREST: 1
           - DARK_FOREST: 1
+          - PALE_GARDEN: 1
           - SAKURA_GROVE: 1
           - WOODED_BUTTES: 1
           - SCARLET_SANCTUARY: 1
@@ -236,6 +245,7 @@ stages:
           - RAINFOREST: 1
           - BROADLEAF_FOREST: 1
           - DARK_FOREST: 1
+          - PALE_GARDEN: 1
           - SAKURA_GROVE: 1
           - WOODED_BUTTES: 1
           - BAMBOO_BASIN: 1
@@ -248,8 +258,9 @@ stages:
           - TEMPERATE_MOUNTAINS: 3
 
         temperate-coast-flat:
-          - BEACH: 3
-          - SHRUB_BEACH: 3
+          - BEACH: 2
+          - SHRUB_BEACH: 2
+          - COASTAL_PINE_BARRENS: 1
         temperate-coast:
           - TEMPERATE_SEA_ARCHES: 3
         temperate-coast-highlands:
@@ -363,11 +374,23 @@ stages:
           - XERIC_MOUNTAINS: 1
 
         temperate-steppe-flat:
-          - COLD_STEPPE: 1
+          - SUNFLOWER_PRAIRIE: 1
+          - PRAIRIE: 2
+          - PLAINS: 3
+          - OAK_SAVANNA: 1
+          - STEPPE: 1
         temperate-steppe:
-          - COLD_STEPPE: 1
+          - SUNFLOWER_PRAIRIE: 1
+          - PRAIRIE: 2
+          - PLAINS: 3
+          - OAK_SAVANNA: 1
+          - STEPPE: 1
         temperate-steppe-highlands:
-          - COLD_STEPPE: 1
+          - SUNFLOWER_PRAIRIE: 1
+          - PRAIRIE: 2
+          - PLAINS: 3
+          - OAK_SAVANNA: 1
+          - STEPPE: 1
 
         cold-desert-flat:
           - SALT_FLATS: 1

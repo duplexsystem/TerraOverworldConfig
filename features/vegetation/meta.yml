@@ -6,6 +6,7 @@ plantable-blocks:
   - minecraft:dirt
   - minecraft:coarse_dirt
   - minecraft:moss_block
+  - minecraft:pale_moss_block
   - minecraft:rooted_dirt
 
 dry-plantable-blocks:
@@ -14,6 +15,7 @@ dry-plantable-blocks:
   - minecraft:dirt
   - minecraft:coarse_dirt
   - minecraft:moss_block
+  - minecraft:pale_moss_block
   - minecraft:rooted_dirt
 
 palm-tree-plantable-blocks:
@@ -35,6 +37,7 @@ sugarcane-plantable-blocks:
   - minecraft:dirt
   - minecraft:coarse_dirt
   - minecraft:moss_block
+  - minecraft:pale_moss_block
   - minecraft:rooted_dirt
 
 dripleaf-plantable-blocks:
@@ -45,6 +48,7 @@ dripleaf-plantable-blocks:
   - minecraft:farmland
   - minecraft:grass_block
   - minecraft:moss_block
+  - minecraft:pale_moss_block
   - minecraft:mycelium
   - minecraft:podzol
   - minecraft:rooted_dirt
